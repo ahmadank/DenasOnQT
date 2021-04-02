@@ -11,10 +11,13 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QFrame>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
+#include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSlider>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -23,59 +26,92 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QPushButton *pushButton;
-    QPushButton *pushButton_2;
-    QPushButton *pushButton_3;
-    QPushButton *pushButton_4;
-    QPushButton *pushButton_5;
-    QPushButton *pushButton_6;
-    QPushButton *pushButton_7;
-    QPushButton *pushButton_8;
-    QLabel *label;
-    QSlider *horizontalSlider;
-    QLabel *label_2;
+    QPushButton *downButton;
+    QPushButton *upButton;
+    QPushButton *selectButton;
+    QPushButton *homeButton;
+    QPushButton *powerButton;
+    QPushButton *backButton;
+    QPushButton *rightButton;
+    QPushButton *leftButton;
+    QLabel *display;
+    QWidget *layoutWidget;
+    QVBoxLayout *verticalLayout;
+    QLabel *batteryLabel;
+    QSlider *batterySlider;
+    QProgressBar *batteryBar;
+    QFrame *line;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(516, 472);
+        MainWindow->resize(487, 472);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
-        pushButton = new QPushButton(centralWidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(90, 310, 61, 61));
-        pushButton_2 = new QPushButton(centralWidget);
-        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
-        pushButton_2->setGeometry(QRect(90, 190, 61, 61));
-        pushButton_3 = new QPushButton(centralWidget);
-        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
-        pushButton_3->setGeometry(QRect(90, 250, 61, 61));
-        pushButton_4 = new QPushButton(centralWidget);
-        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
-        pushButton_4->setGeometry(QRect(170, 400, 61, 61));
-        pushButton_5 = new QPushButton(centralWidget);
-        pushButton_5->setObjectName(QString::fromUtf8("pushButton_5"));
-        pushButton_5->setGeometry(QRect(90, 400, 61, 61));
-        pushButton_6 = new QPushButton(centralWidget);
-        pushButton_6->setObjectName(QString::fromUtf8("pushButton_6"));
-        pushButton_6->setGeometry(QRect(10, 400, 61, 61));
-        pushButton_7 = new QPushButton(centralWidget);
-        pushButton_7->setObjectName(QString::fromUtf8("pushButton_7"));
-        pushButton_7->setGeometry(QRect(150, 250, 61, 61));
-        pushButton_8 = new QPushButton(centralWidget);
-        pushButton_8->setObjectName(QString::fromUtf8("pushButton_8"));
-        pushButton_8->setGeometry(QRect(30, 250, 61, 61));
-        label = new QLabel(centralWidget);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setGeometry(QRect(10, 10, 231, 231));
-        horizontalSlider = new QSlider(centralWidget);
-        horizontalSlider->setObjectName(QString::fromUtf8("horizontalSlider"));
-        horizontalSlider->setGeometry(QRect(290, 440, 201, 16));
-        horizontalSlider->setOrientation(Qt::Horizontal);
-        label_2 = new QLabel(centralWidget);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(300, 420, 64, 17));
+        downButton = new QPushButton(centralWidget);
+        downButton->setObjectName(QString::fromUtf8("downButton"));
+        downButton->setGeometry(QRect(90, 310, 61, 61));
+        upButton = new QPushButton(centralWidget);
+        upButton->setObjectName(QString::fromUtf8("upButton"));
+        upButton->setGeometry(QRect(90, 190, 61, 61));
+        selectButton = new QPushButton(centralWidget);
+        selectButton->setObjectName(QString::fromUtf8("selectButton"));
+        selectButton->setGeometry(QRect(90, 250, 61, 61));
+        homeButton = new QPushButton(centralWidget);
+        homeButton->setObjectName(QString::fromUtf8("homeButton"));
+        homeButton->setGeometry(QRect(170, 400, 61, 61));
+        powerButton = new QPushButton(centralWidget);
+        powerButton->setObjectName(QString::fromUtf8("powerButton"));
+        powerButton->setGeometry(QRect(90, 400, 61, 61));
+        backButton = new QPushButton(centralWidget);
+        backButton->setObjectName(QString::fromUtf8("backButton"));
+        backButton->setGeometry(QRect(10, 400, 61, 61));
+        rightButton = new QPushButton(centralWidget);
+        rightButton->setObjectName(QString::fromUtf8("rightButton"));
+        rightButton->setGeometry(QRect(150, 250, 61, 61));
+        leftButton = new QPushButton(centralWidget);
+        leftButton->setObjectName(QString::fromUtf8("leftButton"));
+        leftButton->setGeometry(QRect(30, 250, 61, 61));
+        display = new QLabel(centralWidget);
+        display->setObjectName(QString::fromUtf8("display"));
+        display->setGeometry(QRect(10, 10, 221, 171));
+        display->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"	qproperty-alignment: 'AlignVCenter | AlignRight';\n"
+"	border: 1px solid gray;\n"
+"}\n"
+"\n"
+"background-color: white;"));
+        layoutWidget = new QWidget(centralWidget);
+        layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
+        layoutWidget->setGeometry(QRect(260, 390, 211, 71));
+        verticalLayout = new QVBoxLayout(layoutWidget);
+        verticalLayout->setSpacing(6);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        batteryLabel = new QLabel(layoutWidget);
+        batteryLabel->setObjectName(QString::fromUtf8("batteryLabel"));
+
+        verticalLayout->addWidget(batteryLabel);
+
+        batterySlider = new QSlider(layoutWidget);
+        batterySlider->setObjectName(QString::fromUtf8("batterySlider"));
+        batterySlider->setOrientation(Qt::Horizontal);
+
+        verticalLayout->addWidget(batterySlider);
+
+        batteryBar = new QProgressBar(layoutWidget);
+        batteryBar->setObjectName(QString::fromUtf8("batteryBar"));
+        batteryBar->setValue(24);
+
+        verticalLayout->addWidget(batteryBar);
+
+        line = new QFrame(centralWidget);
+        line->setObjectName(QString::fromUtf8("line"));
+        line->setGeometry(QRect(230, 10, 31, 451));
+        line->setFrameShape(QFrame::VLine);
+        line->setFrameShadow(QFrame::Sunken);
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
@@ -85,17 +121,17 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        pushButton->setText(QCoreApplication::translate("MainWindow", "DOWN", nullptr));
-        pushButton_2->setText(QCoreApplication::translate("MainWindow", "UP", nullptr));
-        pushButton_3->setText(QCoreApplication::translate("MainWindow", "SELECT", nullptr));
-        pushButton_4->setText(QCoreApplication::translate("MainWindow", "HOME", nullptr));
-        pushButton_5->setText(QCoreApplication::translate("MainWindow", "POWER", nullptr));
-        pushButton_6->setText(QCoreApplication::translate("MainWindow", "BACK", nullptr));
-        pushButton_7->setText(QCoreApplication::translate("MainWindow", "RIGHT", nullptr));
-        pushButton_8->setText(QCoreApplication::translate("MainWindow", "LEFT", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
-        label_2->setText(QCoreApplication::translate("MainWindow", "Battery", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "DENAS Simulator", nullptr));
+        downButton->setText(QCoreApplication::translate("MainWindow", "DOWN", nullptr));
+        upButton->setText(QCoreApplication::translate("MainWindow", "UP", nullptr));
+        selectButton->setText(QCoreApplication::translate("MainWindow", "SELECT", nullptr));
+        homeButton->setText(QCoreApplication::translate("MainWindow", "HOME", nullptr));
+        powerButton->setText(QCoreApplication::translate("MainWindow", "POWER", nullptr));
+        backButton->setText(QCoreApplication::translate("MainWindow", "BACK", nullptr));
+        rightButton->setText(QCoreApplication::translate("MainWindow", "RIGHT", nullptr));
+        leftButton->setText(QCoreApplication::translate("MainWindow", "LEFT", nullptr));
+        display->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
+        batteryLabel->setText(QCoreApplication::translate("MainWindow", "Battery", nullptr));
     } // retranslateUi
 
 };
