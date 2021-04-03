@@ -159,6 +159,9 @@
      </item>
      <item>
       <widget class="QSlider" name="batterySlider">
+       <property name="value">
+        <number>99</number>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
@@ -167,7 +170,7 @@
      <item>
       <widget class="QProgressBar" name="batteryBar">
        <property name="value">
-        <number>24</number>
+        <number>100</number>
        </property>
       </widget>
      </item>
