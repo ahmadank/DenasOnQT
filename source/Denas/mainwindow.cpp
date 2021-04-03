@@ -6,7 +6,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    connect(ui->batterySlider, SIGNAL(valueChanged(int)), ui->batteryBar, SLOT(setvalue(int)));
 }
 
 MainWindow::~MainWindow()

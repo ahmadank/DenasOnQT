@@ -189,5 +189,38 @@ background-color: white;</string>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>batteryBar</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>batterySlider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>354</x>
+     <y>442</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>354</x>
+     <y>419</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>batterySlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>batteryBar</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>384</x>
+     <y>417</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>384</x>
+     <y>452</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
