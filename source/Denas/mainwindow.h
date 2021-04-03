@@ -20,6 +20,7 @@ private:
 
 private slots:
     void battery();
+    void buttonPressed();
 };
 
 #endif // MAINWINDOW_H

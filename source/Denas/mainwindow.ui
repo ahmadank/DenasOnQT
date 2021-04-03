@@ -129,14 +129,14 @@
     </property>
     <property name="styleSheet">
      <string notr="true">QLabel {
-	qproperty-alignment: 'AlignVCenter | AlignRight';
+	qproperty-alignment: AlignCenter;
 	border: 1px solid gray;
 }
 
 background-color: white;</string>
     </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string>DENAS</string>
     </property>
    </widget>
    <widget class="QWidget" name="layoutWidget">
