@@ -131,9 +131,10 @@
      <string notr="true">QLabel {
 	qproperty-alignment: AlignCenter;
 	border: 1px solid gray;
+    background-color: white;
 }
 
-background-color: white;</string>
+</string>
     </property>
     <property name="text">
      <string>DENAS</string>
@@ -148,7 +149,7 @@ background-color: white;</string>
       <height>71</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
+    <layout class="QVBoxLayout" name="batteryLayout">
      <item>
       <widget class="QLabel" name="batteryLabel">
        <property name="text">
@@ -185,30 +186,69 @@ background-color: white;</string>
      <enum>Qt::Vertical</enum>
     </property>
    </widget>
-   <widget class="QSlider" name="horizontalSlider">
+   <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
       <x>260</x>
-      <y>30</y>
-      <width>160</width>
-      <height>16</height>
+      <y>70</y>
+      <width>211</width>
+      <height>51</height>
      </rect>
     </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
+    <layout class="QVBoxLayout" name="frequencyLayout">
+     <item>
+      <widget class="QLabel" name="frequencyLabel">
+       <property name="text">
+        <string>Frequency</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="frequencySlider">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
-   <widget class="QSlider" name="horizontalSlider_2">
+   <widget class="QWidget" name="verticalLayoutWidget_2">
     <property name="geometry">
      <rect>
       <x>260</x>
-      <y>60</y>
-      <width>160</width>
-      <height>16</height>
+      <y>10</y>
+      <width>211</width>
+      <height>51</height>
      </rect>
     </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
+    <layout class="QVBoxLayout" name="powerLayout">
+     <item>
+      <widget class="QLabel" name="powerLabel">
+       <property name="text">
+        <string>Power Level</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="powerSlider">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QCheckBox" name="touchSkinBox">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>130</y>
+      <width>211</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Device Touching Skin</string>
     </property>
    </widget>
   </widget>
