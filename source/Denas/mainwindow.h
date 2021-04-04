@@ -17,7 +17,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    bool powerOn = true;
+    bool powerOn = false;
 
 private slots:
     void battery();

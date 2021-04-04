@@ -188,10 +188,6 @@ public:
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(210, 10, 21, 21));
         listWidget = new QListWidget(centralWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
-        new QListWidgetItem(listWidget);
         listWidget->setObjectName(QString::fromUtf8("listWidget"));
         listWidget->setGeometry(QRect(10, 30, 221, 141));
         MainWindow->setCentralWidget(centralWidget);
@@ -219,19 +215,6 @@ public:
         touchSkinBox->setText(QCoreApplication::translate("MainWindow", "Device Touching Skin", nullptr));
         percentLabel->setText(QCoreApplication::translate("MainWindow", "100", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "%", nullptr));
-
-        const bool __sortingEnabled = listWidget->isSortingEnabled();
-        listWidget->setSortingEnabled(false);
-        QListWidgetItem *___qlistwidgetitem = listWidget->item(0);
-        ___qlistwidgetitem->setText(QCoreApplication::translate("MainWindow", "Programs", nullptr));
-        QListWidgetItem *___qlistwidgetitem1 = listWidget->item(1);
-        ___qlistwidgetitem1->setText(QCoreApplication::translate("MainWindow", "Frequency", nullptr));
-        QListWidgetItem *___qlistwidgetitem2 = listWidget->item(2);
-        ___qlistwidgetitem2->setText(QCoreApplication::translate("MainWindow", "Recordings", nullptr));
-        QListWidgetItem *___qlistwidgetitem3 = listWidget->item(3);
-        ___qlistwidgetitem3->setText(QCoreApplication::translate("MainWindow", "Settings", nullptr));
-        listWidget->setSortingEnabled(__sortingEnabled);
-
     } // retranslateUi
 
 };
