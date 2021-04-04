@@ -9,8 +9,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    connect(ui->upButton, SIGNAL(released()), this, SLOT(buttonPressed()));
-    connect(ui->downButton, SIGNAL(released()), this, SLOT(buttonPressed()));
+    connect(ui->upButton, SIGNAL(released()), this, SLOT(navUp()));
+    connect(ui->downButton, SIGNAL(released()), this, SLOT(navDown()));
     connect(ui->leftButton, SIGNAL(released()), this, SLOT(buttonPressed()));
     connect(ui->rightButton, SIGNAL(released()), this, SLOT(buttonPressed()));
     connect(ui->selectButton, SIGNAL(released()), this, SLOT(buttonPressed()));
@@ -42,16 +42,38 @@ void MainWindow::buttonPressed(){
 
 }
 
+void MainWindow::navigation(){
+
+
+}
+
+void MainWindow::navUp(){
+    --menuLocation;
+    if(menuLocation == -1)
+        menuLocation=ui->listWidget->count() -1;
+    ui->listWidget->setCurrentRow(menuLocation);
+
+}
+
+void MainWindow::navDown(){
+    ++menuLocation;
+    if(menuLocation == ui->listWidget->count())
+        menuLocation = 0;
+    ui->listWidget->setCurrentRow(menuLocation);
+}
+
 void MainWindow::powerClicked(){
 
     if (powerOn){
         ui->listWidget->clear();
+        menuLocation=0;
     }else{
         ui->listWidget->addItem("Programs");
         ui->listWidget->addItem("Frequency");
         ui->listWidget->addItem("Recordings");
         ui->listWidget->addItem("Settings");
-        ui->listWidget->setCurrentRow(0);
+        menuLocation=0;
+        ui->listWidget->setCurrentRow(menuLocation);
     }
 
     powerOn = !powerOn;

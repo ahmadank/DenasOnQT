@@ -18,11 +18,16 @@ public:
 private:
     Ui::MainWindow *ui;
     bool powerOn = false;
+    int menuLocation;
 
 private slots:
     void battery();
     void buttonPressed();
+    void navigation();
     void powerClicked();
+    void navUp();
+    void navDown();
+
 };
 
 #endif // MAINWINDOW_H
