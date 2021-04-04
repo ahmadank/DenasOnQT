@@ -21,6 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
             ui->batteryBar, SLOT(setValue(int)));
     connect(ui->batterySlider, SIGNAL(valueChanged(int)),
             ui->percentLabel, SLOT(setNum(int)));
+
 }
 
 MainWindow::~MainWindow()
@@ -35,6 +36,6 @@ void MainWindow::battery(){
 void MainWindow::buttonPressed(){
     QPushButton * button = (QPushButton*) sender();
 
-    ui->display->setText(button->text());
+    ui->denasLabel->setText(button->text());
 
 }

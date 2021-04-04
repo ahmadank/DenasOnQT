@@ -11,8 +11,10 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QListWidget>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
@@ -34,13 +36,25 @@ public:
     QPushButton *backButton;
     QPushButton *rightButton;
     QPushButton *leftButton;
-    QLabel *display;
+    QLabel *denasLabel;
     QWidget *layoutWidget;
-    QVBoxLayout *verticalLayout;
+    QVBoxLayout *batteryLayout;
     QLabel *batteryLabel;
     QSlider *batterySlider;
     QProgressBar *batteryBar;
     QFrame *line;
+    QWidget *verticalLayoutWidget;
+    QVBoxLayout *frequencyLayout;
+    QLabel *frequencyLabel;
+    QSlider *frequencySlider;
+    QWidget *verticalLayoutWidget_2;
+    QVBoxLayout *powerLayout;
+    QLabel *powerLabel;
+    QSlider *powerSlider;
+    QCheckBox *touchSkinBox;
+    QLabel *percentLabel;
+    QLabel *label;
+    QListWidget *listWidget;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -73,45 +87,101 @@ public:
         leftButton = new QPushButton(centralWidget);
         leftButton->setObjectName(QString::fromUtf8("leftButton"));
         leftButton->setGeometry(QRect(30, 250, 61, 61));
-        display = new QLabel(centralWidget);
-        display->setObjectName(QString::fromUtf8("display"));
-        display->setGeometry(QRect(10, 10, 221, 171));
-        display->setStyleSheet(QString::fromUtf8("QLabel {\n"
-"	qproperty-alignment: 'AlignVCenter | AlignRight';\n"
+        denasLabel = new QLabel(centralWidget);
+        denasLabel->setObjectName(QString::fromUtf8("denasLabel"));
+        denasLabel->setGeometry(QRect(10, 10, 221, 21));
+        denasLabel->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"	qproperty-alignment: AlignCenter;\n"
 "	border: 1px solid gray;\n"
+"    background-color: white;\n"
 "}\n"
 "\n"
-"background-color: white;"));
+""));
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
         layoutWidget->setGeometry(QRect(260, 390, 211, 71));
-        verticalLayout = new QVBoxLayout(layoutWidget);
-        verticalLayout->setSpacing(6);
-        verticalLayout->setContentsMargins(11, 11, 11, 11);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        batteryLayout = new QVBoxLayout(layoutWidget);
+        batteryLayout->setSpacing(6);
+        batteryLayout->setContentsMargins(11, 11, 11, 11);
+        batteryLayout->setObjectName(QString::fromUtf8("batteryLayout"));
+        batteryLayout->setContentsMargins(0, 0, 0, 0);
         batteryLabel = new QLabel(layoutWidget);
         batteryLabel->setObjectName(QString::fromUtf8("batteryLabel"));
 
-        verticalLayout->addWidget(batteryLabel);
+        batteryLayout->addWidget(batteryLabel);
 
         batterySlider = new QSlider(layoutWidget);
         batterySlider->setObjectName(QString::fromUtf8("batterySlider"));
+        batterySlider->setValue(99);
         batterySlider->setOrientation(Qt::Horizontal);
 
-        verticalLayout->addWidget(batterySlider);
+        batteryLayout->addWidget(batterySlider);
 
         batteryBar = new QProgressBar(layoutWidget);
         batteryBar->setObjectName(QString::fromUtf8("batteryBar"));
-        batteryBar->setValue(24);
+        batteryBar->setValue(100);
 
-        verticalLayout->addWidget(batteryBar);
+        batteryLayout->addWidget(batteryBar);
 
         line = new QFrame(centralWidget);
         line->setObjectName(QString::fromUtf8("line"));
         line->setGeometry(QRect(230, 10, 31, 451));
         line->setFrameShape(QFrame::VLine);
         line->setFrameShadow(QFrame::Sunken);
+        verticalLayoutWidget = new QWidget(centralWidget);
+        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
+        verticalLayoutWidget->setGeometry(QRect(260, 70, 211, 51));
+        frequencyLayout = new QVBoxLayout(verticalLayoutWidget);
+        frequencyLayout->setSpacing(6);
+        frequencyLayout->setContentsMargins(11, 11, 11, 11);
+        frequencyLayout->setObjectName(QString::fromUtf8("frequencyLayout"));
+        frequencyLayout->setContentsMargins(0, 0, 0, 0);
+        frequencyLabel = new QLabel(verticalLayoutWidget);
+        frequencyLabel->setObjectName(QString::fromUtf8("frequencyLabel"));
+
+        frequencyLayout->addWidget(frequencyLabel);
+
+        frequencySlider = new QSlider(verticalLayoutWidget);
+        frequencySlider->setObjectName(QString::fromUtf8("frequencySlider"));
+        frequencySlider->setOrientation(Qt::Horizontal);
+
+        frequencyLayout->addWidget(frequencySlider);
+
+        verticalLayoutWidget_2 = new QWidget(centralWidget);
+        verticalLayoutWidget_2->setObjectName(QString::fromUtf8("verticalLayoutWidget_2"));
+        verticalLayoutWidget_2->setGeometry(QRect(260, 10, 211, 51));
+        powerLayout = new QVBoxLayout(verticalLayoutWidget_2);
+        powerLayout->setSpacing(6);
+        powerLayout->setContentsMargins(11, 11, 11, 11);
+        powerLayout->setObjectName(QString::fromUtf8("powerLayout"));
+        powerLayout->setContentsMargins(0, 0, 0, 0);
+        powerLabel = new QLabel(verticalLayoutWidget_2);
+        powerLabel->setObjectName(QString::fromUtf8("powerLabel"));
+
+        powerLayout->addWidget(powerLabel);
+
+        powerSlider = new QSlider(verticalLayoutWidget_2);
+        powerSlider->setObjectName(QString::fromUtf8("powerSlider"));
+        powerSlider->setOrientation(Qt::Horizontal);
+
+        powerLayout->addWidget(powerSlider);
+
+        touchSkinBox = new QCheckBox(centralWidget);
+        touchSkinBox->setObjectName(QString::fromUtf8("touchSkinBox"));
+        touchSkinBox->setGeometry(QRect(260, 130, 211, 23));
+        percentLabel = new QLabel(centralWidget);
+        percentLabel->setObjectName(QString::fromUtf8("percentLabel"));
+        percentLabel->setGeometry(QRect(180, 10, 31, 21));
+        label = new QLabel(centralWidget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(210, 10, 21, 21));
+        listWidget = new QListWidget(centralWidget);
+        new QListWidgetItem(listWidget);
+        new QListWidgetItem(listWidget);
+        new QListWidgetItem(listWidget);
+        new QListWidgetItem(listWidget);
+        listWidget->setObjectName(QString::fromUtf8("listWidget"));
+        listWidget->setGeometry(QRect(10, 30, 221, 141));
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
@@ -130,8 +200,26 @@ public:
         backButton->setText(QCoreApplication::translate("MainWindow", "BACK", nullptr));
         rightButton->setText(QCoreApplication::translate("MainWindow", "RIGHT", nullptr));
         leftButton->setText(QCoreApplication::translate("MainWindow", "LEFT", nullptr));
-        display->setText(QCoreApplication::translate("MainWindow", "TextLabel", nullptr));
+        denasLabel->setText(QCoreApplication::translate("MainWindow", "DENAS", nullptr));
         batteryLabel->setText(QCoreApplication::translate("MainWindow", "Battery", nullptr));
+        frequencyLabel->setText(QCoreApplication::translate("MainWindow", "Frequency", nullptr));
+        powerLabel->setText(QCoreApplication::translate("MainWindow", "Power Level", nullptr));
+        touchSkinBox->setText(QCoreApplication::translate("MainWindow", "Device Touching Skin", nullptr));
+        percentLabel->setText(QCoreApplication::translate("MainWindow", "100", nullptr));
+        label->setText(QCoreApplication::translate("MainWindow", "%", nullptr));
+
+        const bool __sortingEnabled = listWidget->isSortingEnabled();
+        listWidget->setSortingEnabled(false);
+        QListWidgetItem *___qlistwidgetitem = listWidget->item(0);
+        ___qlistwidgetitem->setText(QCoreApplication::translate("MainWindow", "Programs", nullptr));
+        QListWidgetItem *___qlistwidgetitem1 = listWidget->item(1);
+        ___qlistwidgetitem1->setText(QCoreApplication::translate("MainWindow", "Frequency", nullptr));
+        QListWidgetItem *___qlistwidgetitem2 = listWidget->item(2);
+        ___qlistwidgetitem2->setText(QCoreApplication::translate("MainWindow", "Recordings", nullptr));
+        QListWidgetItem *___qlistwidgetitem3 = listWidget->item(3);
+        ___qlistwidgetitem3->setText(QCoreApplication::translate("MainWindow", "Settings", nullptr));
+        listWidget->setSortingEnabled(__sortingEnabled);
+
     } // retranslateUi
 
 };
