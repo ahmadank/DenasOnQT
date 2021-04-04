@@ -18,20 +18,25 @@
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>310</y>
+      <y>340</y>
       <width>61</width>
       <height>61</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">#downButton{
+border-image: url(:down.png);
+}</string>
+    </property>
     <property name="text">
-     <string>DOWN</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="upButton">
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>190</y>
+      <y>200</y>
       <width>61</width>
       <height>61</height>
      </rect>
@@ -44,26 +49,32 @@
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>250</y>
+      <y>270</y>
       <width>61</width>
       <height>61</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">#selectButton{border-image: url(:ok.png);}</string>
+    </property>
     <property name="text">
-     <string>SELECT</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="homeButton">
     <property name="geometry">
      <rect>
       <x>170</x>
-      <y>400</y>
+      <y>190</y>
       <width>61</width>
       <height>61</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">#homeButton{border-image: url(:home.png);}</string>
+    </property>
     <property name="text">
-     <string>HOME</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="powerButton">
@@ -75,47 +86,61 @@
       <height>61</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">#powerButton{
+border-image: url(:powerbutton.png);
+}</string>
+    </property>
     <property name="text">
-     <string>POWER</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="backButton">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>400</y>
+      <x>20</x>
+      <y>190</y>
       <width>61</width>
       <height>61</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">#backButton{border-image: url(:return.png);}</string>
+    </property>
     <property name="text">
-     <string>BACK</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="rightButton">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>250</y>
+      <x>160</x>
+      <y>270</y>
       <width>61</width>
       <height>61</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">#rightButton{border-image: url(:right.png);}</string>
+    </property>
     <property name="text">
-     <string>RIGHT</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="leftButton">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>250</y>
+      <x>20</x>
+      <y>270</y>
       <width>61</width>
       <height>61</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">#leftButton{border-image: url(:left.png);}</string>
+    </property>
     <property name="text">
-     <string>LEFT</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="denasLabel">

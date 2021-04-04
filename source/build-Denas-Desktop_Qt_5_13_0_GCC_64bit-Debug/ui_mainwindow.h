@@ -65,28 +65,35 @@ public:
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         downButton = new QPushButton(centralWidget);
         downButton->setObjectName(QString::fromUtf8("downButton"));
-        downButton->setGeometry(QRect(90, 310, 61, 61));
+        downButton->setGeometry(QRect(90, 330, 61, 61));
         upButton = new QPushButton(centralWidget);
         upButton->setObjectName(QString::fromUtf8("upButton"));
-        upButton->setGeometry(QRect(90, 190, 61, 61));
+        upButton->setGeometry(QRect(90, 210, 61, 61));
         selectButton = new QPushButton(centralWidget);
         selectButton->setObjectName(QString::fromUtf8("selectButton"));
-        selectButton->setGeometry(QRect(90, 250, 61, 61));
+        selectButton->setGeometry(QRect(90, 270, 61, 61));
         homeButton = new QPushButton(centralWidget);
         homeButton->setObjectName(QString::fromUtf8("homeButton"));
-        homeButton->setGeometry(QRect(170, 400, 61, 61));
+        homeButton->setGeometry(QRect(170, 190, 61, 61));
         powerButton = new QPushButton(centralWidget);
         powerButton->setObjectName(QString::fromUtf8("powerButton"));
         powerButton->setGeometry(QRect(90, 400, 61, 61));
+        powerButton->setStyleSheet(QString::fromUtf8("#powerButton{\n"
+"background-color: transparent;\n"
+"border-image: url(:powerbutton.png);\n"
+"background: none;\n"
+"border: none;\n"
+"background-repeat: none;\n"
+"}"));
         backButton = new QPushButton(centralWidget);
         backButton->setObjectName(QString::fromUtf8("backButton"));
-        backButton->setGeometry(QRect(10, 400, 61, 61));
+        backButton->setGeometry(QRect(20, 190, 61, 61));
         rightButton = new QPushButton(centralWidget);
         rightButton->setObjectName(QString::fromUtf8("rightButton"));
-        rightButton->setGeometry(QRect(150, 250, 61, 61));
+        rightButton->setGeometry(QRect(150, 270, 61, 61));
         leftButton = new QPushButton(centralWidget);
         leftButton->setObjectName(QString::fromUtf8("leftButton"));
-        leftButton->setGeometry(QRect(30, 250, 61, 61));
+        leftButton->setGeometry(QRect(30, 270, 61, 61));
         denasLabel = new QLabel(centralWidget);
         denasLabel->setObjectName(QString::fromUtf8("denasLabel"));
         denasLabel->setGeometry(QRect(10, 10, 221, 21));

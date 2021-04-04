@@ -53,9 +53,11 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../Denas/main.cpp \
-		../Denas/mainwindow.cpp moc_mainwindow.cpp
+		../Denas/mainwindow.cpp qrc_diagrmas.cpp \
+		moc_mainwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
+		qrc_diagrmas.o \
 		moc_mainwindow.o
 DIST          = ../../../../Qt/5.13.0/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/common/unix.conf \
@@ -228,6 +230,7 @@ DIST          = ../../../../Qt/5.13.0/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/qt_config.prf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/spec_post.prf \
+		../Denas/.qmake.stash \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/toolchain.prf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/default_pre.prf \
@@ -431,6 +434,7 @@ Makefile: ../Denas/Denas.pro ../../../../Qt/5.13.0/gcc_64/mkspecs/linux-g++/qmak
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/qt_config.prf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/toolchain.prf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/default_pre.prf \
@@ -450,7 +454,8 @@ Makefile: ../Denas/Denas.pro ../../../../Qt/5.13.0/gcc_64/mkspecs/linux-g++/qmak
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/exceptions.prf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/yacc.prf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/lex.prf \
-		../Denas/Denas.pro
+		../Denas/Denas.pro \
+		../Denas/diagrmas.qrc
 	$(QMAKE) -o Makefile ../Denas/Denas.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
 ../../../../Qt/5.13.0/gcc_64/mkspecs/features/spec_pre.prf:
 ../../../../Qt/5.13.0/gcc_64/mkspecs/common/unix.conf:
@@ -623,6 +628,7 @@ Makefile: ../Denas/Denas.pro ../../../../Qt/5.13.0/gcc_64/mkspecs/linux-g++/qmak
 ../../../../Qt/5.13.0/gcc_64/mkspecs/features/qt_config.prf:
 ../../../../Qt/5.13.0/gcc_64/mkspecs/linux-g++/qmake.conf:
 ../../../../Qt/5.13.0/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../../Qt/5.13.0/gcc_64/mkspecs/features/exclusive_builds.prf:
 ../../../../Qt/5.13.0/gcc_64/mkspecs/features/toolchain.prf:
 ../../../../Qt/5.13.0/gcc_64/mkspecs/features/default_pre.prf:
@@ -643,6 +649,7 @@ Makefile: ../Denas/Denas.pro ../../../../Qt/5.13.0/gcc_64/mkspecs/linux-g++/qmak
 ../../../../Qt/5.13.0/gcc_64/mkspecs/features/yacc.prf:
 ../../../../Qt/5.13.0/gcc_64/mkspecs/features/lex.prf:
 ../Denas/Denas.pro:
+../Denas/diagrmas.qrc:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ../Denas/Denas.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
 
@@ -657,6 +664,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
+	$(COPY_FILE) --parents ../Denas/diagrmas.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt/5.13.0/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Denas/mainwindow.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../Denas/main.cpp ../Denas/mainwindow.cpp $(DISTDIR)/
@@ -684,8 +692,19 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_diagrmas.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_diagrmas.cpp
+qrc_diagrmas.cpp: ../Denas/diagrmas.qrc \
+		../../../../Qt/5.13.0/gcc_64/bin/rcc \
+		../Denas/up.png \
+		../Denas/down.png \
+		../Denas/home.png \
+		../Denas/right.png \
+		../Denas/left.png \
+		../Denas/powerbutton.png
+	/home/student/Qt/5.13.0/gcc_64/bin/rcc -name diagrmas ../Denas/diagrmas.qrc -o qrc_diagrmas.cpp
+
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
@@ -823,7 +842,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -1050,8 +1069,55 @@ mainwindow.o: ../Denas/mainwindow.cpp ../Denas/mainwindow.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtGui/qicon.h \
-		ui_mainwindow.h
+		ui_mainwindow.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/QVariant \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QApplication \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qapplication.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qcoreapplication.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qeventloop.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qdesktopwidget.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtGui/qguiapplication.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtGui/qinputmethod.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QCheckBox \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qcheckbox.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QFrame \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qframe.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QLabel \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qlabel.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QListWidget \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qlistwidget.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qlistview.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractitemview.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qstyleoption.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtGui/qvalidator.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qregularexpression.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qslider.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qabstractslider.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qstyle.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qtabbar.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qrubberband.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QProgressBar \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qprogressbar.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QPushButton \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qpushbutton.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QSlider \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QVBoxLayout \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qlayout.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qgridlayout.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QWidget \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../Denas/mainwindow.cpp
+
+qrc_diagrmas.o: qrc_diagrmas.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_diagrmas.o qrc_diagrmas.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

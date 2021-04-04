@@ -4,6 +4,7 @@
         <file>home.png</file>
         <file>left.png</file>
         <file>right.png</file>
-        <file>up.png</file>
+        <file>powerbutton.png</file>
+        <file>ok.png</file>
     </qresource>
 </RCC>
