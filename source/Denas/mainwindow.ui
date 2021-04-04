@@ -41,8 +41,11 @@ border-image: url(:down.png);
       <height>61</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">#upButton{border-image: url(:up.png);}</string>
+    </property>
     <property name="text">
-     <string>UP</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="selectButton">

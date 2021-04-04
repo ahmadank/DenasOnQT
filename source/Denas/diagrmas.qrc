@@ -6,5 +6,7 @@
         <file>right.png</file>
         <file>powerbutton.png</file>
         <file>ok.png</file>
+        <file>up.png</file>
+        <file>return.png</file>
     </qresource>
 </RCC>
