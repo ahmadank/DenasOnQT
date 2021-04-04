@@ -317,26 +317,6 @@ border-image: url(:powerbutton.png);
       <height>141</height>
      </rect>
     </property>
-    <item>
-     <property name="text">
-      <string>Programs</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Frequency</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Recordings</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Settings</string>
-     </property>
-    </item>
    </widget>
   </widget>
  </widget>
