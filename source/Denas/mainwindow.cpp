@@ -21,6 +21,8 @@ MainWindow::MainWindow(QWidget *parent) :
             ui->batteryBar, SLOT(setValue(int)));
     connect(ui->batterySlider, SIGNAL(valueChanged(int)),
             ui->percentLabel, SLOT(setNum(int)));
+    connect(ui->powerButton, SIGNAL(pressed()),
+            ui->listWidget, SLOT(clear()));
 
 }
 
