@@ -697,10 +697,12 @@ compiler_rcc_clean:
 	-$(DEL_FILE) qrc_diagrmas.cpp
 qrc_diagrmas.cpp: ../Denas/diagrmas.qrc \
 		../../../../Qt/5.13.0/gcc_64/bin/rcc \
+		../Denas/ok.png \
 		../Denas/up.png \
 		../Denas/down.png \
 		../Denas/home.png \
 		../Denas/right.png \
+		../Denas/return.png \
 		../Denas/left.png \
 		../Denas/powerbutton.png
 	/home/student/Qt/5.13.0/gcc_64/bin/rcc -name diagrmas ../Denas/diagrmas.qrc -o qrc_diagrmas.cpp

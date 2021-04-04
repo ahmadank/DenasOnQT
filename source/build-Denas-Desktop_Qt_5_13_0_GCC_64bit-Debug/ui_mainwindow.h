@@ -65,35 +65,40 @@ public:
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         downButton = new QPushButton(centralWidget);
         downButton->setObjectName(QString::fromUtf8("downButton"));
-        downButton->setGeometry(QRect(90, 330, 61, 61));
+        downButton->setGeometry(QRect(90, 340, 61, 61));
+        downButton->setStyleSheet(QString::fromUtf8("#downButton{\n"
+"border-image: url(:down.png);\n"
+"}"));
         upButton = new QPushButton(centralWidget);
         upButton->setObjectName(QString::fromUtf8("upButton"));
-        upButton->setGeometry(QRect(90, 210, 61, 61));
+        upButton->setGeometry(QRect(90, 200, 61, 61));
+        upButton->setStyleSheet(QString::fromUtf8("#upButton{border-image: url(:up.png);}"));
         selectButton = new QPushButton(centralWidget);
         selectButton->setObjectName(QString::fromUtf8("selectButton"));
         selectButton->setGeometry(QRect(90, 270, 61, 61));
+        selectButton->setStyleSheet(QString::fromUtf8("#selectButton{border-image: url(:ok.png);}"));
         homeButton = new QPushButton(centralWidget);
         homeButton->setObjectName(QString::fromUtf8("homeButton"));
         homeButton->setGeometry(QRect(170, 190, 61, 61));
+        homeButton->setStyleSheet(QString::fromUtf8("#homeButton{border-image: url(:home.png);}"));
         powerButton = new QPushButton(centralWidget);
         powerButton->setObjectName(QString::fromUtf8("powerButton"));
         powerButton->setGeometry(QRect(90, 400, 61, 61));
         powerButton->setStyleSheet(QString::fromUtf8("#powerButton{\n"
-"background-color: transparent;\n"
 "border-image: url(:powerbutton.png);\n"
-"background: none;\n"
-"border: none;\n"
-"background-repeat: none;\n"
 "}"));
         backButton = new QPushButton(centralWidget);
         backButton->setObjectName(QString::fromUtf8("backButton"));
         backButton->setGeometry(QRect(20, 190, 61, 61));
+        backButton->setStyleSheet(QString::fromUtf8("#backButton{border-image: url(:return.png);}"));
         rightButton = new QPushButton(centralWidget);
         rightButton->setObjectName(QString::fromUtf8("rightButton"));
-        rightButton->setGeometry(QRect(150, 270, 61, 61));
+        rightButton->setGeometry(QRect(160, 270, 61, 61));
+        rightButton->setStyleSheet(QString::fromUtf8("#rightButton{border-image: url(:right.png);}"));
         leftButton = new QPushButton(centralWidget);
         leftButton->setObjectName(QString::fromUtf8("leftButton"));
-        leftButton->setGeometry(QRect(30, 270, 61, 61));
+        leftButton->setGeometry(QRect(20, 270, 61, 61));
+        leftButton->setStyleSheet(QString::fromUtf8("#leftButton{border-image: url(:left.png);}"));
         denasLabel = new QLabel(centralWidget);
         denasLabel->setObjectName(QString::fromUtf8("denasLabel"));
         denasLabel->setGeometry(QRect(10, 10, 221, 21));
@@ -199,14 +204,14 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "DENAS Simulator", nullptr));
-        downButton->setText(QCoreApplication::translate("MainWindow", "DOWN", nullptr));
-        upButton->setText(QCoreApplication::translate("MainWindow", "UP", nullptr));
-        selectButton->setText(QCoreApplication::translate("MainWindow", "SELECT", nullptr));
-        homeButton->setText(QCoreApplication::translate("MainWindow", "HOME", nullptr));
-        powerButton->setText(QCoreApplication::translate("MainWindow", "POWER", nullptr));
-        backButton->setText(QCoreApplication::translate("MainWindow", "BACK", nullptr));
-        rightButton->setText(QCoreApplication::translate("MainWindow", "RIGHT", nullptr));
-        leftButton->setText(QCoreApplication::translate("MainWindow", "LEFT", nullptr));
+        downButton->setText(QString());
+        upButton->setText(QString());
+        selectButton->setText(QString());
+        homeButton->setText(QString());
+        powerButton->setText(QString());
+        backButton->setText(QString());
+        rightButton->setText(QString());
+        leftButton->setText(QString());
         denasLabel->setText(QCoreApplication::translate("MainWindow", "DENAS", nullptr));
         batteryLabel->setText(QCoreApplication::translate("MainWindow", "Battery", nullptr));
         frequencyLabel->setText(QCoreApplication::translate("MainWindow", "Frequency", nullptr));
