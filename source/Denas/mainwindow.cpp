@@ -47,7 +47,11 @@ void MainWindow::powerClicked(){
     if (powerOn){
         ui->listWidget->clear();
     }else{
-        ui->listWidget->reset();
+        ui->listWidget->addItem("Programs");
+        ui->listWidget->addItem("Frequency");
+        ui->listWidget->addItem("Recordings");
+        ui->listWidget->addItem("Settings");
+        ui->listWidget->setCurrentRow(0);
     }
 
     powerOn = !powerOn;
