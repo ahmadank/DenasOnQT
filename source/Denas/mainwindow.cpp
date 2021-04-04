@@ -19,6 +19,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->homeButton, SIGNAL(released()), this, SLOT(buttonPressed()));
     connect(ui->batterySlider, SIGNAL(valueChanged(int)),
             ui->batteryBar, SLOT(setValue(int)));
+    connect(ui->batterySlider, SIGNAL(valueChanged(int)),
+            ui->percentLabel, SLOT(setValue(int)));
 }
 
 MainWindow::~MainWindow()
