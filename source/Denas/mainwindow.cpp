@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->batterySlider, SIGNAL(valueChanged(int)),
             ui->percentLabel, SLOT(setNum(int)));
     connect(ui->powerButton, SIGNAL(pressed()),
-            ui->listWidget, SLOT(clear()));
+            this, SLOT(powerClicked()));
 
 }
 
@@ -39,5 +39,17 @@ void MainWindow::buttonPressed(){
     QPushButton * button = (QPushButton*) sender();
 
     ui->denasLabel->setText(button->text());
+
+}
+
+void MainWindow::powerClicked(){
+
+    if (powerOn){
+        ui->listWidget->clear();
+    }else{
+        ui->listWidget->reset();
+    }
+
+    powerOn = !powerOn;
 
 }

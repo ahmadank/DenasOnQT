@@ -17,10 +17,12 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    bool powerOn = true;
 
 private slots:
     void battery();
     void buttonPressed();
+    void powerClicked();
 };
 
 #endif // MAINWINDOW_H
