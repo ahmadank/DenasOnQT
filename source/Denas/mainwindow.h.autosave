@@ -28,7 +28,6 @@ private slots:
     void navUp();
     void navDown();
     void programsClicked();
-<<<<<<< HEAD
     void okClicked();
 =======
     void homeClicked();
