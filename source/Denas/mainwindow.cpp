@@ -23,7 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
             ui->percentLabel, SLOT(setNum(int)));
     connect(ui->powerButton, SIGNAL(pressed()),
             this, SLOT(powerClicked()));
-    connect(ui->selectButton, SIGNAL(pressed()), this, SLOT(programsClicked()));
+    connect(ui->selectButton, SIGNAL(pressed()), this, SLOT(okClicked()));
 }
 
 MainWindow::~MainWindow()
@@ -90,3 +90,10 @@ void MainWindow::programsClicked(){
         ui->listWidget->addItem("Bloating");
         ui->listWidget->setCurrentRow(0);
     }
+
+void MainWindow::okClicked(){
+    //program selected from menu
+    if (menuLocation == 0){
+        programsClicked();
+    }
+}

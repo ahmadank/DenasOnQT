@@ -28,6 +28,7 @@ private slots:
     void navUp();
     void navDown();
     void programsClicked();
+    void okClicked();
 
 };
 
