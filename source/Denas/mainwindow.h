@@ -29,6 +29,8 @@ private slots:
     void navDown();
     void programsClicked();
     void frequencyClicked();
+    void recordingsClicked();
+    void settingsClicked();
     void okClicked();
     void homeClicked();
 

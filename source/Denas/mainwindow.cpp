@@ -53,7 +53,6 @@ void MainWindow::navUp(){
     if(menuLocation == -1)
         menuLocation=ui->listWidget->count() -1;
     ui->listWidget->setCurrentRow(menuLocation);
-
 }
 
 void MainWindow::navDown(){
@@ -89,15 +88,30 @@ void MainWindow::programsClicked(){
 }
 
 void MainWindow::frequencyClicked(){
+    ui->listWidget->clear();
+    ui->listWidget->addItem("10Hz");
+    ui->listWidget->addItem("30Hz");
+    ui->listWidget->addItem("75Hz");
+    ui->listWidget->addItem("125Hz");
+    ui->listWidget->setCurrentRow(0);
+}
 
-        ui->listWidget->clear();
+void MainWindow::recordingsClicked(){
+    ui->listWidget->clear();
+}
 
-        ui->listWidget->addItem("10Hz");
-        ui->listWidget->addItem("30Hz");
-        ui->listWidget->addItem("75Hz");
-        ui->listWidget->addItem("125Hz");
-        ui->listWidget->setCurrentRow(0);
-    }
+void MainWindow::settingsClicked(){
+    ui->listWidget->clear();
+    ui->listWidget->addItem("Clear Recordings History");
+    ui->listWidget->addItem("Sound");
+    ui->listWidget->addItem("Brightness");
+    ui->listWidget->addItem("Economy");
+    ui->listWidget->addItem("Clock");
+    ui->listWidget->addItem("Alarm Clock");
+    ui->listWidget->addItem("Language");
+    ui->listWidget->addItem("Color");
+    ui->listWidget->setCurrentRow(0);
+}
 
 void MainWindow::homeClicked(){
     ui->listWidget->clear();
@@ -107,7 +121,7 @@ void MainWindow::homeClicked(){
     ui->listWidget->addItem("Settings");
     menuLocation=0;
     ui->listWidget->setCurrentRow(menuLocation);
-    }
+}
 
 void MainWindow::okClicked(){
     //program selected from menu
@@ -115,8 +129,12 @@ void MainWindow::okClicked(){
         programsClicked();
     } else if (menuLocation == 1) {
         frequencyClicked();
+    } else if (menuLocation == 2) {
+        recordingsClicked();
+    } else if (menuLocation == 3) {
+        settingsClicked();
     }
 
-
-    }
+    menuLocation=0;
+}
 
