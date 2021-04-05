@@ -23,6 +23,7 @@ private slots:
     void battery();
     void buttonPressed();
     void powerClicked();
+    void programsClicked();
 };
 
 #endif // MAINWINDOW_H
