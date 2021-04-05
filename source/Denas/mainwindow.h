@@ -28,11 +28,9 @@ private slots:
     void navUp();
     void navDown();
     void programsClicked();
-<<<<<<< HEAD
+    void frequencyClicked();
     void okClicked();
-=======
     void homeClicked();
->>>>>>> 10680e8aaf93d3ca41794ffaf9c330611ffb23a1
 
 };
 

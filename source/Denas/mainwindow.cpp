@@ -24,6 +24,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->powerButton, SIGNAL(pressed()),
             this, SLOT(powerClicked()));
     connect(ui->selectButton, SIGNAL(pressed()), this, SLOT(okClicked()));
+    connect(ui->selectButton, SIGNAL(pressed()), this, SLOT(frequencyClicked()));
+
 }
 
 MainWindow::~MainWindow()
@@ -87,6 +89,17 @@ void MainWindow::programsClicked(){
     ui->listWidget->setCurrentRow(0);
 }
 
+void MainWindow::frequencyClicked(){
+
+        ui->listWidget->clear();
+
+        ui->listWidget->addItem("10Hz");
+        ui->listWidget->addItem("30Hz");
+        ui->listWidget->addItem("75Hz");
+        ui->listWidget->addItem("125Hz");
+        ui->listWidget->setCurrentRow(0);
+    }
+
 void MainWindow::homeClicked(){
     ui->listWidget->clear();
     ui->listWidget->addItem("Programs");
@@ -100,6 +113,10 @@ void MainWindow::homeClicked(){
 void MainWindow::okClicked(){
     //program selected from menu
     if (menuLocation == 0){
-        programsClicked();
+        programsClicked();}
+        else if (menuLocation == 1) {
+            frequencyClicked();
+
+        }
     }
-}
+
