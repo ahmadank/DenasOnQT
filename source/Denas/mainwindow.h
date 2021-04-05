@@ -27,6 +27,7 @@ private slots:
     void powerClicked();
     void navUp();
     void navDown();
+    void programsClicked();
 
 };
 

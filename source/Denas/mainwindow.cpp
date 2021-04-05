@@ -23,7 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
             ui->percentLabel, SLOT(setNum(int)));
     connect(ui->powerButton, SIGNAL(pressed()),
             this, SLOT(powerClicked()));
-
+    connect(ui->selectButton, SIGNAL(pressed()), this, SLOT(programsClicked()));
 }
 
 MainWindow::~MainWindow()
@@ -79,3 +79,14 @@ void MainWindow::powerClicked(){
     powerOn = !powerOn;
 
 }
+
+void MainWindow::programsClicked(){
+
+        ui->listWidget->clear();
+
+        ui->listWidget->addItem("Pain");
+        ui->listWidget->addItem("Throat");
+        ui->listWidget->addItem("Head");
+        ui->listWidget->addItem("Bloating");
+        ui->listWidget->setCurrentRow(0);
+    }
