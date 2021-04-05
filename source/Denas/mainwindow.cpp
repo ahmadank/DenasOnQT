@@ -76,6 +76,7 @@ void MainWindow::powerClicked(){
     }
 
     powerOn = !powerOn;
+    menuScreen = 0;
 }
 
 void MainWindow::programsClicked(){
@@ -85,6 +86,7 @@ void MainWindow::programsClicked(){
     ui->listWidget->addItem("Head");
     ui->listWidget->addItem("Bloating");
     ui->listWidget->setCurrentRow(0);
+    menuScreen = 1;
 }
 
 void MainWindow::frequencyClicked(){
@@ -94,10 +96,12 @@ void MainWindow::frequencyClicked(){
     ui->listWidget->addItem("75Hz");
     ui->listWidget->addItem("125Hz");
     ui->listWidget->setCurrentRow(0);
+    menuScreen = 2;
 }
 
 void MainWindow::recordingsClicked(){
     ui->listWidget->clear();
+    menuScreen = 3;
 }
 
 void MainWindow::settingsClicked(){
@@ -111,6 +115,7 @@ void MainWindow::settingsClicked(){
     ui->listWidget->addItem("Language");
     ui->listWidget->addItem("Color");
     ui->listWidget->setCurrentRow(0);
+    menuScreen = 4;
 }
 
 void MainWindow::homeClicked(){
@@ -121,20 +126,24 @@ void MainWindow::homeClicked(){
     ui->listWidget->addItem("Settings");
     menuLocation=0;
     ui->listWidget->setCurrentRow(menuLocation);
+    menuScreen = 0;
 }
 
 void MainWindow::okClicked(){
     //program selected from menu
-    if (menuLocation == 0){
-        programsClicked();
-    } else if (menuLocation == 1) {
-        frequencyClicked();
-    } else if (menuLocation == 2) {
-        recordingsClicked();
-    } else if (menuLocation == 3) {
-        settingsClicked();
+    if (menuScreen == 0){
+        if (menuLocation == 0){
+            programsClicked();
+        } else if (menuLocation == 1) {
+            frequencyClicked();
+        } else if (menuLocation == 2) {
+            recordingsClicked();
+        } else if (menuLocation == 3) {
+            settingsClicked();
+        }
+
+        menuLocation=0;
     }
 
-    menuLocation=0;
 }
 

@@ -19,6 +19,7 @@ private:
     Ui::MainWindow *ui;
     bool powerOn = false;
     int menuLocation;
+    int menuScreen;
 
 private slots:
     void battery();
