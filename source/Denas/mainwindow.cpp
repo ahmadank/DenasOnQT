@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->selectButton, SIGNAL(released()), this, SLOT(buttonPressed()));
     connect(ui->powerButton, SIGNAL(released()), this, SLOT(buttonPressed()));
     connect(ui->backButton, SIGNAL(released()), this, SLOT(buttonPressed()));
-    connect(ui->homeButton, SIGNAL(released()), this, SLOT(buttonPressed()));
+    connect(ui->homeButton, SIGNAL(released()), this, SLOT(homeClicked()));
     connect(ui->batterySlider, SIGNAL(valueChanged(int)),
             ui->batteryBar, SLOT(setValue(int)));
     connect(ui->batterySlider, SIGNAL(valueChanged(int)),
@@ -63,7 +63,6 @@ void MainWindow::navDown(){
 }
 
 void MainWindow::powerClicked(){
-
     if (powerOn){
         ui->listWidget->clear();
         menuLocation=0;
@@ -77,16 +76,24 @@ void MainWindow::powerClicked(){
     }
 
     powerOn = !powerOn;
-
 }
 
 void MainWindow::programsClicked(){
+    ui->listWidget->clear();
+    ui->listWidget->addItem("Pain");
+    ui->listWidget->addItem("Throat");
+    ui->listWidget->addItem("Head");
+    ui->listWidget->addItem("Bloating");
+    ui->listWidget->setCurrentRow(0);
+}
 
-        ui->listWidget->clear();
+void MainWindow::homeClicked(){
+    ui->listWidget->clear();
+    ui->listWidget->addItem("Programs");
+    ui->listWidget->addItem("Frequency");
+    ui->listWidget->addItem("Recordings");
+    ui->listWidget->addItem("Settings");
 
-        ui->listWidget->addItem("Pain");
-        ui->listWidget->addItem("Throat");
-        ui->listWidget->addItem("Head");
-        ui->listWidget->addItem("Bloating");
-        ui->listWidget->setCurrentRow(0);
-    }
+    menuLocation=0;
+    ui->listWidget->setCurrentRow(menuLocation);
+}
