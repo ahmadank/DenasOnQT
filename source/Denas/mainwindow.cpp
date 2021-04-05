@@ -24,7 +24,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->powerButton, SIGNAL(pressed()),
             this, SLOT(powerClicked()));
     connect(ui->selectButton, SIGNAL(pressed()), this, SLOT(okClicked()));
-    connect(ui->selectButton, SIGNAL(pressed()), this, SLOT(frequencyClicked()));
 
 }
 
@@ -113,10 +112,11 @@ void MainWindow::homeClicked(){
 void MainWindow::okClicked(){
     //program selected from menu
     if (menuLocation == 0){
-        programsClicked();}
-        else if (menuLocation == 1) {
-            frequencyClicked();
+        programsClicked();
+    } else if (menuLocation == 1) {
+        frequencyClicked();
+    }
 
-        }
+
     }
 
