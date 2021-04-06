@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->rightButton, SIGNAL(released()), this, SLOT(buttonPressed()));
     connect(ui->selectButton, SIGNAL(released()), this, SLOT(buttonPressed()));
     connect(ui->powerButton, SIGNAL(released()), this, SLOT(buttonPressed()));
-    connect(ui->backButton, SIGNAL(released()), this, SLOT(buttonPressed()));
+    connect(ui->backButton, SIGNAL(released()), this, SLOT(returnButton()));
     connect(ui->homeButton, SIGNAL(released()), this, SLOT(homeClicked()));
     connect(ui->batterySlider, SIGNAL(valueChanged(int)),
             ui->batteryBar, SLOT(setValue(int)));
@@ -77,6 +77,7 @@ void MainWindow::powerClicked(){
 
     powerOn = !powerOn;
     menuScreen = 0;
+    nestedMenu = 0;
 }
 
 void MainWindow::programsClicked(){
@@ -87,6 +88,7 @@ void MainWindow::programsClicked(){
     ui->listWidget->addItem("Bloating");
     ui->listWidget->setCurrentRow(0);
     menuScreen = 1;
+    ++nestedMenu;
 }
 
 void MainWindow::frequencyClicked(){
@@ -97,11 +99,13 @@ void MainWindow::frequencyClicked(){
     ui->listWidget->addItem("125Hz");
     ui->listWidget->setCurrentRow(0);
     menuScreen = 2;
+    ++nestedMenu;
 }
 
 void MainWindow::recordingsClicked(){
     ui->listWidget->clear();
     menuScreen = 3;
+    ++nestedMenu;
 }
 
 void MainWindow::settingsClicked(){
@@ -116,6 +120,7 @@ void MainWindow::settingsClicked(){
     ui->listWidget->addItem("Color");
     ui->listWidget->setCurrentRow(0);
     menuScreen = 4;
+    ++nestedMenu;
 }
 
 void MainWindow::homeClicked(){
@@ -127,6 +132,7 @@ void MainWindow::homeClicked(){
     menuLocation=0;
     ui->listWidget->setCurrentRow(menuLocation);
     menuScreen = 0;
+    nestedMenu = 0;
 }
 
 void MainWindow::okClicked(){
@@ -147,3 +153,9 @@ void MainWindow::okClicked(){
 
 }
 
+void MainWindow::returnButton(){
+    if(nestedMenu == 1){
+        nestedMenu = 0;
+        homeClicked();
+    }
+}

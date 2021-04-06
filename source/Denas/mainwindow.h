@@ -20,6 +20,7 @@ private:
     bool powerOn = false;
     int menuLocation;
     int menuScreen;
+    int nestedMenu;
 
 private slots:
     void battery();
@@ -34,6 +35,7 @@ private slots:
     void settingsClicked();
     void okClicked();
     void homeClicked();
+    void returnButton();
 
 };
 
