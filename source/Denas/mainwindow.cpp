@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 
 #include <QDebug>
+#include <QTime>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -162,6 +163,19 @@ void MainWindow::returnButton(){
     }
 }
 
+void waitInterval( int ms )
+{
+    QTime endTime = QTime::currentTime().addMSecs( ms );
+    while( QTime::currentTime() < endTime )
+    {
+        QCoreApplication::processEvents( QEventLoop::AllEvents, 100 );
+    }
+}
+
 void MainWindow::decreaseBattery(){
-    ui->batterySlider->setValue(ui->batterySlider->value()-10);
+    while (ui->batterySlider->value()){
+        ui->batterySlider->setValue(ui->batterySlider->value()-1);
+        waitInterval(100);
+    }
+
 }
