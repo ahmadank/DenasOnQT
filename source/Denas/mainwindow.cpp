@@ -26,7 +26,7 @@ MainWindow::MainWindow(QWidget *parent) :
             this, SLOT(powerClicked()));
     connect(ui->selectButton, SIGNAL(pressed()), this, SLOT(okClicked()));
 
-    connect(ui->touchSkinBox, SIGNAL(stateChanged(1)), this, SLOT(decreaseBattery()));
+    connect(ui->touchSkinBox, SIGNAL(stateChanged(int)), this, SLOT(decreaseBattery()));
 
 }
 
@@ -173,7 +173,7 @@ void waitInterval( int ms )
 }
 
 void MainWindow::decreaseBattery(){
-    while (ui->batterySlider->value()){
+    while (ui->batterySlider->value() && ui->touchSkinBox->isChecked()){
         ui->batterySlider->setValue(ui->batterySlider->value()-1);
         waitInterval(1000);
     }
