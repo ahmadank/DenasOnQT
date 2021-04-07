@@ -25,6 +25,8 @@ MainWindow::MainWindow(QWidget *parent) :
             this, SLOT(powerClicked()));
     connect(ui->selectButton, SIGNAL(pressed()), this, SLOT(okClicked()));
 
+    connect(ui->touchSkinBox, SIGNAL(stateChanged(int)), this, SLOT(decreaseBattery()));
+
 }
 
 MainWindow::~MainWindow()
@@ -158,4 +160,8 @@ void MainWindow::returnButton(){
         nestedMenu = 0;
         homeClicked();
     }
+}
+
+void MainWindow::decreaseBattery(){
+    ui->batterySlider->setValue(ui->batterySlider->value()-10);
 }

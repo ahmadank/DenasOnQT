@@ -36,6 +36,7 @@ private slots:
     void okClicked();
     void homeClicked();
     void returnButton();
+    void decreaseBattery();
 
 };
 
