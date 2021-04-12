@@ -159,7 +159,12 @@ void MainWindow::okClicked(){
             settingsClicked();
         }
 
+
         menuLocation=0;
+    } else if (menuScreen == 1){
+        if (menuLocation == 0){
+            programClicked();
+        }
     }
 
 }
