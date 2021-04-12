@@ -27,6 +27,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->selectButton, SIGNAL(pressed()), this, SLOT(okClicked()));
 
     connect(ui->touchSkinBox, SIGNAL(stateChanged(int)), this, SLOT(decreaseBattery()));
+    connect(ui->message, SIGNAL(textChanged()), this, SLOT(programClicked()));
 
 }
 
@@ -91,6 +92,13 @@ void MainWindow::programsClicked(){
     ui->listWidget->addItem("Bloating");
     ui->listWidget->setCurrentRow(0);
     menuScreen = 1;
+    ++nestedMenu;
+}
+
+void MainWindow::programClicked(){
+    ui->listWidget->clear();
+    ui->message->setText("Please choose a power level.");
+    menuScreen = 3;
     ++nestedMenu;
 }
 
@@ -163,11 +171,9 @@ void MainWindow::returnButton(){
     }
 }
 
-void waitInterval( int ms )
-{
+void waitInterval( int ms ) {
     QTime endTime = QTime::currentTime().addMSecs( ms );
-    while( endTime >= QTime::currentTime() )
-    {
+    while( endTime >= QTime::currentTime() ) {
         QCoreApplication::processEvents( QEventLoop::AllEvents, 100 );
     }
 }

@@ -30,6 +30,7 @@ private slots:
     void navUp();
     void navDown();
     void programsClicked();
+    void programClicked();
     void frequencyClicked();
     void recordingsClicked();
     void settingsClicked();

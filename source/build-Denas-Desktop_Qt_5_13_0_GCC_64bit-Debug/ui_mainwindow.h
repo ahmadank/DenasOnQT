@@ -55,6 +55,7 @@ public:
     QLabel *percentLabel;
     QLabel *label;
     QListWidget *listWidget;
+    QLabel *message;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -190,6 +191,9 @@ public:
         listWidget = new QListWidget(centralWidget);
         listWidget->setObjectName(QString::fromUtf8("listWidget"));
         listWidget->setGeometry(QRect(10, 30, 221, 141));
+        message = new QLabel(centralWidget);
+        message->setObjectName(QString::fromUtf8("message"));
+        message->setGeometry(QRect(300, 220, 64, 17));
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
@@ -215,6 +219,7 @@ public:
         touchSkinBox->setText(QCoreApplication::translate("MainWindow", "Device Touching Skin", nullptr));
         percentLabel->setText(QCoreApplication::translate("MainWindow", "100", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "%", nullptr));
+        message->setText(QCoreApplication::translate("MainWindow", "hello", nullptr));
     } // retranslateUi
 
 };
