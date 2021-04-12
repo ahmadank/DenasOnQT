@@ -26,10 +26,12 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+        therapytimer.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+        therapytimer.h
 
 FORMS += \
         mainwindow.ui
