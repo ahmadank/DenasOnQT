@@ -111,6 +111,7 @@ void MainWindow::settingsClicked(){
 
 void MainWindow::homeClicked(){
     ui->listWidget->clear();
+    ui->message->clear();
     ui->listWidget->addItem("Programs");
     ui->listWidget->addItem("Frequency");
     ui->listWidget->addItem("Recordings");
@@ -134,10 +135,10 @@ void MainWindow::okClicked(){
             settingsClicked();
         }
 
-
         menuLocation=0;
+
     } else if (menuScreen == 1){
-        if (menuLocation == 0){
+        if (menuLocation == 0 || menuLocation == 1 || menuLocation == 2 || menuLocation == 3){
             programMessage();
         }
     }
