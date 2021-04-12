@@ -9,10 +9,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     connect(ui->upButton, SIGNAL(released()), this, SLOT(navUp()));
     connect(ui->downButton, SIGNAL(released()), this, SLOT(navDown()));
-    connect(ui->leftButton, SIGNAL(released()), this, SLOT(buttonPressed()));
-    connect(ui->rightButton, SIGNAL(released()), this, SLOT(buttonPressed()));
-    connect(ui->selectButton, SIGNAL(released()), this, SLOT(buttonPressed()));
-    connect(ui->powerButton, SIGNAL(released()), this, SLOT(buttonPressed()));
+    connect(ui->leftButton, SIGNAL(released()), this, SLOT(returnButton()));
+    connect(ui->rightButton, SIGNAL(released()), this, SLOT(okClicked()));
     connect(ui->backButton, SIGNAL(released()), this, SLOT(returnButton()));
     connect(ui->homeButton, SIGNAL(released()), this, SLOT(homeClicked()));
     connect(ui->batterySlider, SIGNAL(valueChanged(int)),
@@ -27,12 +25,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
 MainWindow::~MainWindow(){
     delete ui;
-}
-
-void MainWindow::buttonPressed(){
-    QPushButton * button = (QPushButton*) sender();
-
-    ui->denasLabel->setText(button->text());
 }
 
 void MainWindow::navUp(){

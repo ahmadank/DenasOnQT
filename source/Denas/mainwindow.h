@@ -23,7 +23,6 @@ private:
     int nestedMenu;
 
 private slots:
-    void buttonPressed();
     void powerClicked();
     void navUp();
     void navDown();
