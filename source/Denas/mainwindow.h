@@ -23,14 +23,12 @@ private:
     int nestedMenu;
 
 private slots:
-    void battery();
     void buttonPressed();
-    void navigation();
     void powerClicked();
     void navUp();
     void navDown();
     void programsClicked();
-    void programClicked();
+    void programMessage();
     void frequencyClicked();
     void recordingsClicked();
     void settingsClicked();

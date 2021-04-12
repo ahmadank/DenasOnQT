@@ -4,10 +4,7 @@
 #include <QDebug>
 #include <QTime>
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
-{
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
 
     connect(ui->upButton, SIGNAL(released()), this, SLOT(navUp()));
@@ -25,31 +22,17 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->powerButton, SIGNAL(pressed()),
             this, SLOT(powerClicked()));
     connect(ui->selectButton, SIGNAL(pressed()), this, SLOT(okClicked()));
-
     connect(ui->touchSkinBox, SIGNAL(stateChanged(int)), this, SLOT(decreaseBattery()));
-    connect(ui->message, SIGNAL(textChanged()), this, SLOT(programClicked()));
-
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow(){
     delete ui;
-}
-
-void MainWindow::battery(){
-
 }
 
 void MainWindow::buttonPressed(){
     QPushButton * button = (QPushButton*) sender();
 
     ui->denasLabel->setText(button->text());
-
-}
-
-void MainWindow::navigation(){
-
-
 }
 
 void MainWindow::navUp(){
@@ -95,7 +78,7 @@ void MainWindow::programsClicked(){
     ++nestedMenu;
 }
 
-void MainWindow::programClicked(){
+void MainWindow::programMessage(){
     ui->listWidget->clear();
     ui->message->setText("Please choose a power level.");
     menuScreen = 3;
@@ -163,7 +146,7 @@ void MainWindow::okClicked(){
         menuLocation=0;
     } else if (menuScreen == 1){
         if (menuLocation == 0){
-            programClicked();
+            programMessage();
         }
     }
 
@@ -176,9 +159,9 @@ void MainWindow::returnButton(){
     }
 }
 
-void waitInterval( int ms ) {
+void waitInterval(int ms){
     QTime endTime = QTime::currentTime().addMSecs( ms );
-    while( endTime >= QTime::currentTime() ) {
+    while(endTime >= QTime::currentTime()){
         QCoreApplication::processEvents( QEventLoop::AllEvents, 100 );
     }
 }
@@ -188,5 +171,4 @@ void MainWindow::decreaseBattery(){
         ui->batterySlider->setValue(ui->batterySlider->value()-1);
         waitInterval(1000);
     }
-
 }

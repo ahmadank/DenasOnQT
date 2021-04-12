@@ -90,7 +90,7 @@ public:
 "}"));
         backButton = new QPushButton(centralWidget);
         backButton->setObjectName(QString::fromUtf8("backButton"));
-        backButton->setGeometry(QRect(20, 190, 61, 61));
+        backButton->setGeometry(QRect(10, 190, 61, 61));
         backButton->setStyleSheet(QString::fromUtf8("#backButton{border-image: url(:return.png);}"));
         rightButton = new QPushButton(centralWidget);
         rightButton->setObjectName(QString::fromUtf8("rightButton"));
@@ -193,7 +193,11 @@ public:
         listWidget->setGeometry(QRect(10, 30, 221, 141));
         message = new QLabel(centralWidget);
         message->setObjectName(QString::fromUtf8("message"));
-        message->setGeometry(QRect(300, 220, 64, 17));
+        message->setGeometry(QRect(20, 40, 201, 121));
+        message->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"	qproperty-alignment: AlignCenter;\n"
+"}\n"
+""));
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
@@ -219,7 +223,7 @@ public:
         touchSkinBox->setText(QCoreApplication::translate("MainWindow", "Device Touching Skin", nullptr));
         percentLabel->setText(QCoreApplication::translate("MainWindow", "100", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "%", nullptr));
-        message->setText(QCoreApplication::translate("MainWindow", "hello", nullptr));
+        message->setText(QString());
     } // retranslateUi
 
 };

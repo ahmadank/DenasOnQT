@@ -1115,7 +1115,9 @@ mainwindow.o: ../Denas/mainwindow.cpp ../Denas/mainwindow.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qlayoutitem.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qgridlayout.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QWidget \
-		../../../../Qt/5.13.0/gcc_64/include/QtCore/QDebug
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/QDebug \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/QTime \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qdatetime.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../Denas/mainwindow.cpp
 
 qrc_diagrmas.o: qrc_diagrmas.cpp 
