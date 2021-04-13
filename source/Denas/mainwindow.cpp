@@ -73,6 +73,7 @@ void MainWindow::programMessage(){
     ui->listWidget->clear();
     ui->message->setText("Please choose a power level.");
     device.setMenuScreen(3);
+    ui->message->setText("Please choose a power level.\n " + QString::number(ui->powerSlider->value()));
     ++nestedMenu;
 }
 
