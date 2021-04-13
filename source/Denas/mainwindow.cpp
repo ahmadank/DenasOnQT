@@ -149,16 +149,9 @@ void MainWindow::returnButton(){
     }
 }
 
-void waitInterval(int ms){
-    QTime endTime = QTime::currentTime().addMSecs( ms );
-    while(endTime >= QTime::currentTime()){
-        QCoreApplication::processEvents( QEventLoop::AllEvents, 100 );
-    }
-}
-
 void MainWindow::decreaseBattery(){
     while (ui->batterySlider->value() && ui->touchSkinBox->isChecked()){
         ui->batterySlider->setValue(ui->batterySlider->value()-1);
-        waitInterval(1000);
+        therapyTimer.waitInterval(1000);
     }
 }

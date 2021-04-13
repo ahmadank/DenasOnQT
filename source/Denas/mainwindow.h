@@ -5,10 +5,11 @@
 #include <QDebug>
 #include <QTime>
 #include "device.h"
+#include "therapytimer.h"
 #include <vector>
 #include <string>
-using namespace std;
 
+using namespace std;
 
 namespace Ui {
 class MainWindow;
@@ -25,6 +26,7 @@ public:
 private:
     Ui::MainWindow *ui;
     Device device;
+    TherapyTimer therapyTimer;
     static vector<string> collectionVec;
 
 private slots:
