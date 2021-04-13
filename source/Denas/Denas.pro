@@ -28,11 +28,13 @@ SOURCES += \
         device.cpp \
         main.cpp \
         mainwindow.cpp \
+        programs.cpp \
         therapytimer.cpp
 
 HEADERS += \
         device.h \
         mainwindow.h \
+        programs.h \
         therapytimer.h
 
 FORMS += \
