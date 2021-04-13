@@ -12,14 +12,14 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->rightButton, SIGNAL(released()), this, SLOT(okClicked()));
     connect(ui->backButton, SIGNAL(released()), this, SLOT(returnButton()));
     connect(ui->homeButton, SIGNAL(released()), this, SLOT(homeClicked()));
-    connect(ui->batterySlider, SIGNAL(valueChanged(int)),
-            ui->batteryBar, SLOT(setValue(int)));
-    connect(ui->batterySlider, SIGNAL(valueChanged(int)),
-            ui->percentLabel, SLOT(setNum(int)));
-    connect(ui->powerButton, SIGNAL(pressed()),
-            this, SLOT(powerClicked()));
+    connect(ui->batterySlider, SIGNAL(valueChanged(int)), ui->batteryBar, SLOT(setValue(int)));
+    connect(ui->batterySlider, SIGNAL(valueChanged(int)), ui->percentLabel, SLOT(setNum(int)));
+    connect(ui->powerButton, SIGNAL(pressed()), this, SLOT(powerClicked()));
     connect(ui->selectButton, SIGNAL(pressed()), this, SLOT(okClicked()));
     connect(ui->touchSkinBox, SIGNAL(stateChanged(int)), this, SLOT(decreaseBattery()));
+    connect(ui->powerSlider, SIGNAL(valueChanged(int)),
+            this, SLOT(powerLevel(int)));
+
 }
 
 MainWindow::~MainWindow(){
@@ -33,6 +33,12 @@ void MainWindow::navUp(){
     ui->listWidget->setCurrentRow(device.getMenuLocation());
 }
 
+void MainWindow::powerLevel(int x){
+     ui->message->setText("Please choose a power level.\n " + QString::number(ceil(x / 10)+1));
+
+
+}
+
 void MainWindow::navDown(){
     device.setMenuLocation(device.getMenuLocation() + 1);;
     if(device.getMenuLocation() == ui->listWidget->count())
@@ -43,6 +49,7 @@ void MainWindow::navDown(){
 void MainWindow::powerClicked(){
     if (device.getPowerStatus()){
         ui->listWidget->clear();
+        ui->message->clear();
         device.setMenuLocation(0);
     }else{
         ui->listWidget->addItem("Programs");
@@ -55,7 +62,7 @@ void MainWindow::powerClicked(){
 
     device.setPowerStatus(!device.getPowerStatus());
     device.setMenuScreen(0);
-    nestedMenu = 0;
+    device.setNestedMenu(0);
 }
 
 void MainWindow::programsClicked(){
@@ -66,15 +73,16 @@ void MainWindow::programsClicked(){
     ui->listWidget->addItem("Bloating");
     ui->listWidget->setCurrentRow(0);
     device.setMenuScreen(1);
-    ++nestedMenu;
+    device.setNestedMenu(1);
 }
 
 void MainWindow::programMessage(){
     ui->listWidget->clear();
-    ui->message->setText("Please choose a power level.");
-    device.setMenuScreen(3);
     ui->message->setText("Please choose a power level.\n " + QString::number(ui->powerSlider->value()));
-    ++nestedMenu;
+    device.setMenuScreen(3);
+    device.setNestedMenu(device.getNestedMenu()+1);
+    device.setMenuScreen(3);
+    device.setNestedMenu(2);
 }
 
 void MainWindow::frequencyClicked(){
@@ -85,13 +93,13 @@ void MainWindow::frequencyClicked(){
     ui->listWidget->addItem("125Hz");
     ui->listWidget->setCurrentRow(0);
     device.setMenuScreen(2);
-    ++nestedMenu;
+    device.setNestedMenu(1);
 }
 
 void MainWindow::recordingsClicked(){
     ui->listWidget->clear();
     device.setMenuScreen(3);
-    ++nestedMenu;
+    device.setNestedMenu(1);
 }
 
 void MainWindow::settingsClicked(){
@@ -106,7 +114,7 @@ void MainWindow::settingsClicked(){
     ui->listWidget->addItem("Color");
     ui->listWidget->setCurrentRow(0);
     device.setMenuScreen(4);
-    ++nestedMenu;
+    device.setNestedMenu(1);
 }
 
 void MainWindow::homeClicked(){
@@ -119,7 +127,7 @@ void MainWindow::homeClicked(){
     device.setMenuLocation(0);
     ui->listWidget->setCurrentRow(device.getMenuLocation());
     device.setMenuScreen(0);
-    nestedMenu = 0;
+    device.setNestedMenu(0);
 }
 
 void MainWindow::okClicked(){
@@ -146,8 +154,8 @@ void MainWindow::okClicked(){
 }
 
 void MainWindow::returnButton(){
-    if(nestedMenu == 1){
-        nestedMenu = 0;
+    if(device.getNestedMenu() == 1){
+        device.setNestedMenu(0);
         homeClicked();
     }
 }

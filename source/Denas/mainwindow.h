@@ -8,6 +8,7 @@
 #include "programs.h"
 #include <vector>
 #include <string>
+#include <math.h>
 using namespace std;
 
 
@@ -26,7 +27,6 @@ public:
 private:
     Ui::MainWindow *ui;
     Device device;
-    int nestedMenu;
     static vector<string> collectionVec;
 
 private slots:
@@ -42,6 +42,7 @@ private slots:
     void homeClicked();
     void returnButton();
     void decreaseBattery();
+    void powerLevel(int);
 
 };
 

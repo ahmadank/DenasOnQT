@@ -1,9 +1,8 @@
 #ifndef DEVICE_H
 #define DEVICE_H
 
+class Device{
 
-class Device
-{
 public:
     Device();
     bool getPowerStatus();
@@ -12,6 +11,9 @@ public:
     void setMenuLocation(int);
     int getMenuScreen();
     void setMenuScreen(int);
+    int getNestedMenu();
+    void setNestedMenu(int);
+
 private:
     bool powerOn;
     int menuLocation = 0;
