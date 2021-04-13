@@ -74,6 +74,7 @@ void MainWindow::programsClicked(){
     ui->listWidget->setCurrentRow(0);
     device.setMenuScreen(1);
     device.setNestedMenu(1);
+    device.setOption(0);
 }
 
 void MainWindow::programMessage(){
@@ -82,7 +83,6 @@ void MainWindow::programMessage(){
     device.setMenuScreen(3);
     device.setNestedMenu(device.getNestedMenu()+1);
     device.setMenuScreen(3);
-    device.setNestedMenu(2);
 }
 
 void MainWindow::frequencyClicked(){
@@ -94,12 +94,14 @@ void MainWindow::frequencyClicked(){
     ui->listWidget->setCurrentRow(0);
     device.setMenuScreen(2);
     device.setNestedMenu(1);
+    device.setOption(1);
 }
 
 void MainWindow::recordingsClicked(){
     ui->listWidget->clear();
     device.setMenuScreen(3);
     device.setNestedMenu(1);
+    device.setOption(2);
 }
 
 void MainWindow::settingsClicked(){
@@ -115,6 +117,7 @@ void MainWindow::settingsClicked(){
     ui->listWidget->setCurrentRow(0);
     device.setMenuScreen(4);
     device.setNestedMenu(1);
+    device.setOption(3);
 }
 
 void MainWindow::homeClicked(){
@@ -157,6 +160,18 @@ void MainWindow::returnButton(){
     if(device.getNestedMenu() == 1){
         device.setNestedMenu(0);
         homeClicked();
+    }
+    else if(device.getNestedMenu() == 2){
+        device.setNestedMenu(1);
+        ui->message->clear();
+        if(device.getOption() == 0)
+            programsClicked();
+        else if(device.getOption() == 1)
+            frequencyClicked();
+        else if(device.getOption() == 2)
+            recordingsClicked();
+        else if(device.getOption() == 3)
+            settingsClicked();
     }
 }
 
