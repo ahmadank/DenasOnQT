@@ -12,12 +12,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->rightButton, SIGNAL(released()), this, SLOT(okClicked()));
     connect(ui->backButton, SIGNAL(released()), this, SLOT(returnButton()));
     connect(ui->homeButton, SIGNAL(released()), this, SLOT(homeClicked()));
-    connect(ui->batterySlider, SIGNAL(valueChanged(int)),
-            ui->batteryBar, SLOT(setValue(int)));
-    connect(ui->batterySlider, SIGNAL(valueChanged(int)),
-            ui->percentLabel, SLOT(setNum(int)));
-    connect(ui->powerButton, SIGNAL(pressed()),
-            this, SLOT(powerClicked()));
+    connect(ui->batterySlider, SIGNAL(valueChanged(int)), ui->batteryBar, SLOT(setValue(int)));
+    connect(ui->batterySlider, SIGNAL(valueChanged(int)), ui->percentLabel, SLOT(setNum(int)));
+    connect(ui->powerButton, SIGNAL(pressed()), this, SLOT(powerClicked()));
     connect(ui->selectButton, SIGNAL(pressed()), this, SLOT(okClicked()));
     connect(ui->touchSkinBox, SIGNAL(stateChanged(int)), this, SLOT(decreaseBattery()));
 }
@@ -43,6 +40,7 @@ void MainWindow::navDown(){
 void MainWindow::powerClicked(){
     if (device.getPowerStatus()){
         ui->listWidget->clear();
+        ui->message->clear();
         device.setMenuLocation(0);
     }else{
         ui->listWidget->addItem("Programs");
@@ -71,7 +69,6 @@ void MainWindow::programsClicked(){
 
 void MainWindow::programMessage(){
     ui->listWidget->clear();
-    ui->message->setText("Please choose a power level.");
     ui->message->setText("Please choose a power level.\n " + QString::number(ui->powerSlider->value()));
     device.setMenuScreen(3);
     device.setNestedMenu(2);
