@@ -53,10 +53,7 @@ void MainWindow::powerClicked(){
         ui->message->clear();
         device.setMenuLocation(0);
     }else{
-        ui->listWidget->addItem(programs.getProgram(0));
-        ui->listWidget->addItem("Frequency");
-        ui->listWidget->addItem("Recordings");
-        ui->listWidget->addItem("Settings");
+        fillPrograms();
         device.setMenuLocation(0);
         ui->listWidget->setCurrentRow(device.getMenuLocation());
         ui->powerSlider->setDisabled(true);
@@ -69,7 +66,7 @@ void MainWindow::powerClicked(){
 
 void MainWindow::programsClicked(){
     ui->listWidget->clear();
-    ui->listWidget->addItem(programs.getProgram(0));
+    ui->listWidget->addItem("Pain");
     ui->listWidget->addItem("Throat");
     ui->listWidget->addItem("Head");
     ui->listWidget->addItem("Bloating");
@@ -126,10 +123,7 @@ void MainWindow::settingsClicked(){
 void MainWindow::homeClicked(){
     ui->listWidget->clear();
     ui->message->clear();
-    ui->listWidget->addItem("Programs");
-    ui->listWidget->addItem("Frequency");
-    ui->listWidget->addItem("Recordings");
-    ui->listWidget->addItem("Settings");
+    fillPrograms();
     device.setMenuLocation(0);
     ui->listWidget->setCurrentRow(device.getMenuLocation());
     device.setMenuScreen(0);
@@ -184,5 +178,11 @@ void MainWindow::decreaseBattery(){
     while (ui->batterySlider->value() && ui->touchSkinBox->isChecked()){
         ui->batterySlider->setValue(ui->batterySlider->value()-1);
         therapyTimer.waitInterval(1000);
+    }
+}
+
+void MainWindow::fillPrograms(){
+    for (int i=0; i<programs.getNumOfPrograms();i++){
+        ui->listWidget->addItem(programs.getProgram(i));
     }
 }

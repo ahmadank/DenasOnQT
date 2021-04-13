@@ -3,12 +3,12 @@
 Programs::Programs()
 {
 
-    programsCollection.push_back("name1");
-    programsCollection.push_back("name2");
-    programsCollection.push_back("name3");
-    programsCollection.push_back("name4");
+    programsCollection.push_back("Programs");
+    programsCollection.push_back("Frequency");
+    programsCollection.push_back("Recordings");
+    programsCollection.push_back("Settings");
 
-    numOfPrograms = 4;
+    numOfPrograms = programsCollection.size();
 }
 
 
