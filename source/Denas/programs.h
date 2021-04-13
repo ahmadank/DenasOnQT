@@ -1,7 +1,7 @@
 #ifndef PROGRAMS_H
 #define PROGRAMS_H
 #include <vector>
-#include <string>
+#include <QString>
 
 using namespace std;
 
@@ -10,9 +10,12 @@ class Programs
 {
 public:
     Programs();
-    string getProgram(int);
+    QString getProgram(int);
+    int getNumOfPrograms();
 private:
-    static vector<string> programsCollection;
+    vector<QString> programsCollection;
+    int numOfPrograms;
+
 };
 
 #endif // PROGRAMS_H

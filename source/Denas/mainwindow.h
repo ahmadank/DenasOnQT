@@ -6,11 +6,12 @@
 #include <QTime>
 #include "device.h"
 #include "programs.h"
+#include "therapytimer.h"
 #include <vector>
 #include <string>
 #include <math.h>
-using namespace std;
 
+using namespace std;
 
 namespace Ui {
 class MainWindow;
@@ -27,6 +28,8 @@ public:
 private:
     Ui::MainWindow *ui;
     Device device;
+    TherapyTimer therapyTimer;
+    Programs programs;
     static vector<string> collectionVec;
 
 private slots:

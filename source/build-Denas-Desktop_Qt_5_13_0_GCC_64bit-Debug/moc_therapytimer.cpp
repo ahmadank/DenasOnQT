@@ -21,27 +21,27 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_therapyTimer_t {
+struct qt_meta_stringdata_TherapyTimer_t {
     QByteArrayData data[3];
     char stringdata0[21];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_therapyTimer_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_TherapyTimer_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_therapyTimer_t qt_meta_stringdata_therapyTimer = {
+static const qt_meta_stringdata_TherapyTimer_t qt_meta_stringdata_TherapyTimer = {
     {
-QT_MOC_LITERAL(0, 0, 12), // "therapyTimer"
+QT_MOC_LITERAL(0, 0, 12), // "TherapyTimer"
 QT_MOC_LITERAL(1, 13, 6), // "MySlot"
 QT_MOC_LITERAL(2, 20, 0) // ""
 
     },
-    "therapyTimer\0MySlot\0"
+    "TherapyTimer\0MySlot\0"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_therapyTimer[] = {
+static const uint qt_meta_data_TherapyTimer[] = {
 
  // content:
        8,       // revision
@@ -63,10 +63,10 @@ static const uint qt_meta_data_therapyTimer[] = {
        0        // eod
 };
 
-void therapyTimer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void TherapyTimer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        auto *_t = static_cast<therapyTimer *>(_o);
+        auto *_t = static_cast<TherapyTimer *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->MySlot(); break;
@@ -76,30 +76,30 @@ void therapyTimer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
     Q_UNUSED(_a);
 }
 
-QT_INIT_METAOBJECT const QMetaObject therapyTimer::staticMetaObject = { {
+QT_INIT_METAOBJECT const QMetaObject TherapyTimer::staticMetaObject = { {
     &QObject::staticMetaObject,
-    qt_meta_stringdata_therapyTimer.data,
-    qt_meta_data_therapyTimer,
+    qt_meta_stringdata_TherapyTimer.data,
+    qt_meta_data_TherapyTimer,
     qt_static_metacall,
     nullptr,
     nullptr
 } };
 
 
-const QMetaObject *therapyTimer::metaObject() const
+const QMetaObject *TherapyTimer::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *therapyTimer::qt_metacast(const char *_clname)
+void *TherapyTimer::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_therapyTimer.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_TherapyTimer.stringdata0))
         return static_cast<void*>(this);
     return QObject::qt_metacast(_clname);
 }
 
-int therapyTimer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int TherapyTimer::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QObject::qt_metacall(_c, _id, _a);
     if (_id < 0)

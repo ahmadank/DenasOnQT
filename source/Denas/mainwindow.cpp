@@ -52,7 +52,7 @@ void MainWindow::powerClicked(){
         ui->message->clear();
         device.setMenuLocation(0);
     }else{
-        ui->listWidget->addItem("Programs");
+        ui->listWidget->addItem(programs.getProgram(0));
         ui->listWidget->addItem("Frequency");
         ui->listWidget->addItem("Recordings");
         ui->listWidget->addItem("Settings");
@@ -67,7 +67,7 @@ void MainWindow::powerClicked(){
 
 void MainWindow::programsClicked(){
     ui->listWidget->clear();
-    ui->listWidget->addItem("Pain");
+    ui->listWidget->addItem(programs.getProgram(0));
     ui->listWidget->addItem("Throat");
     ui->listWidget->addItem("Head");
     ui->listWidget->addItem("Bloating");
@@ -160,16 +160,9 @@ void MainWindow::returnButton(){
     }
 }
 
-void waitInterval(int ms){
-    QTime endTime = QTime::currentTime().addMSecs( ms );
-    while(endTime >= QTime::currentTime()){
-        QCoreApplication::processEvents( QEventLoop::AllEvents, 100 );
-    }
-}
-
 void MainWindow::decreaseBattery(){
     while (ui->batterySlider->value() && ui->touchSkinBox->isChecked()){
         ui->batterySlider->setValue(ui->batterySlider->value()-1);
-        waitInterval(1000);
+        therapyTimer.waitInterval(1000);
     }
 }

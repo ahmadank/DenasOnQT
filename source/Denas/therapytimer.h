@@ -3,13 +3,12 @@
 
 #include <QtCore>
 
-
-class therapyTimer : public QObject
-{
+class TherapyTimer : public QObject{
     Q_OBJECT
 
   public:
-    therapyTimer();
+    TherapyTimer();
+    void waitInterval(int);
 
     QTimer *timer;
 
