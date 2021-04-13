@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QDebug>
+#include <QTime>
+
 
 namespace Ui {
 class MainWindow;
@@ -21,6 +24,7 @@ private:
     int menuLocation;
     int menuScreen;
     int nestedMenu;
+
 
 private slots:
     void powerClicked();
