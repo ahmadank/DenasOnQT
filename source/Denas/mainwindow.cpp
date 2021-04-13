@@ -34,7 +34,8 @@ void MainWindow::navUp(){
 }
 
 void MainWindow::powerLevel(int x){
-     ui->message->setText("Please choose a power level.\n " + QString::number(ceil(x / 10)+1));
+    if(device.getNestedMenu() >1)
+        ui->message->setText("Please choose a power level.\n " + QString::number(ceil(x / 10)+1));
 
 
 }
@@ -58,6 +59,7 @@ void MainWindow::powerClicked(){
         ui->listWidget->addItem("Settings");
         device.setMenuLocation(0);
         ui->listWidget->setCurrentRow(device.getMenuLocation());
+        ui->powerSlider->setDisabled(true);
     }
 
     device.setPowerStatus(!device.getPowerStatus());
@@ -74,15 +76,16 @@ void MainWindow::programsClicked(){
     ui->listWidget->setCurrentRow(0);
     device.setMenuScreen(1);
     device.setNestedMenu(1);
+    device.setOption(0);
 }
 
 void MainWindow::programMessage(){
     ui->listWidget->clear();
+    ui->powerSlider->setDisabled(false);
     ui->message->setText("Please choose a power level.\n " + QString::number(ui->powerSlider->value()));
     device.setMenuScreen(3);
     device.setNestedMenu(device.getNestedMenu()+1);
     device.setMenuScreen(3);
-    device.setNestedMenu(2);
 }
 
 void MainWindow::frequencyClicked(){
@@ -94,12 +97,14 @@ void MainWindow::frequencyClicked(){
     ui->listWidget->setCurrentRow(0);
     device.setMenuScreen(2);
     device.setNestedMenu(1);
+    device.setOption(1);
 }
 
 void MainWindow::recordingsClicked(){
     ui->listWidget->clear();
     device.setMenuScreen(3);
     device.setNestedMenu(1);
+    device.setOption(2);
 }
 
 void MainWindow::settingsClicked(){
@@ -115,6 +120,7 @@ void MainWindow::settingsClicked(){
     ui->listWidget->setCurrentRow(0);
     device.setMenuScreen(4);
     device.setNestedMenu(1);
+    device.setOption(3);
 }
 
 void MainWindow::homeClicked(){
@@ -157,6 +163,20 @@ void MainWindow::returnButton(){
     if(device.getNestedMenu() == 1){
         device.setNestedMenu(0);
         homeClicked();
+    }
+    else if(device.getNestedMenu() == 2){
+        device.setNestedMenu(1);
+        ui->message->clear();
+        ui->powerSlider->setDisabled(true);
+        ui->powerSlider->setValue(0);
+        if(device.getOption() == 0)
+            programsClicked();
+        else if(device.getOption() == 1)
+            frequencyClicked();
+        else if(device.getOption() == 2)
+            recordingsClicked();
+        else if(device.getOption() == 3)
+            settingsClicked();
     }
 }
 

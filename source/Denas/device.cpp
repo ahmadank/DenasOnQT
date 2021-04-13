@@ -20,6 +20,13 @@ int Device::getMenuLocation(){
 void Device::setMenuLocation(int location){
     menuLocation = location;
 }
+void Device::setOption(int location){
+    option = location;
+}
+
+int Device::getOption(){
+    return option;
+}
 
 int Device::getMenuScreen(){
     return menuScreen;
