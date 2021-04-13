@@ -25,11 +25,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        device.cpp \
         main.cpp \
         mainwindow.cpp \
         therapytimer.cpp
 
 HEADERS += \
+        device.h \
         mainwindow.h \
         therapytimer.h
 

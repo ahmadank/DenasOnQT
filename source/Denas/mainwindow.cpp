@@ -39,7 +39,7 @@ void MainWindow::navDown(){
 }
 
 void MainWindow::powerClicked(){
-    if (powerOn){
+    if (device.getPowerStatus()){
         ui->listWidget->clear();
         menuLocation=0;
     }else{
@@ -51,7 +51,7 @@ void MainWindow::powerClicked(){
         ui->listWidget->setCurrentRow(menuLocation);
     }
 
-    powerOn = !powerOn;
+    device.setPowerStatus(!device.getPowerStatus());
     menuScreen = 0;
     nestedMenu = 0;
 }

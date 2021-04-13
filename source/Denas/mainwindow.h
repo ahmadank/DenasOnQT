@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QDebug>
 #include <QTime>
+#include "device.h"
 
 
 namespace Ui {
@@ -20,7 +21,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    bool powerOn = false;
+    Device device;
     int menuLocation;
     int menuScreen;
     int nestedMenu;
