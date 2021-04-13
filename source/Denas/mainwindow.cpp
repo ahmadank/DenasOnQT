@@ -59,6 +59,7 @@ void MainWindow::powerClicked(){
         ui->listWidget->addItem("Settings");
         device.setMenuLocation(0);
         ui->listWidget->setCurrentRow(device.getMenuLocation());
+        ui->powerSlider->setDisabled(true);
     }
 
     device.setPowerStatus(!device.getPowerStatus());
@@ -80,6 +81,7 @@ void MainWindow::programsClicked(){
 
 void MainWindow::programMessage(){
     ui->listWidget->clear();
+    ui->powerSlider->setDisabled(false);
     ui->message->setText("Please choose a power level.\n " + QString::number(ui->powerSlider->value()));
     device.setMenuScreen(3);
     device.setNestedMenu(device.getNestedMenu()+1);
@@ -165,6 +167,8 @@ void MainWindow::returnButton(){
     else if(device.getNestedMenu() == 2){
         device.setNestedMenu(1);
         ui->message->clear();
+        ui->powerSlider->setDisabled(true);
+        ui->powerSlider->setValue(0);
         if(device.getOption() == 0)
             programsClicked();
         else if(device.getOption() == 1)
