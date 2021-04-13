@@ -26,9 +26,6 @@ public:
 private:
     Ui::MainWindow *ui;
     Device device;
-    int menuLocation;
-    int menuScreen;
-    int nestedMenu;
     static vector<string> collectionVec;
 
 private slots:

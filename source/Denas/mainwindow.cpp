@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include "device.h"
+
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
 
@@ -10,12 +12,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->rightButton, SIGNAL(released()), this, SLOT(okClicked()));
     connect(ui->backButton, SIGNAL(released()), this, SLOT(returnButton()));
     connect(ui->homeButton, SIGNAL(released()), this, SLOT(homeClicked()));
-    connect(ui->batterySlider, SIGNAL(valueChanged(int)),
-            ui->batteryBar, SLOT(setValue(int)));
-    connect(ui->batterySlider, SIGNAL(valueChanged(int)),
-            ui->percentLabel, SLOT(setNum(int)));
-    connect(ui->powerButton, SIGNAL(pressed()),
-            this, SLOT(powerClicked()));
+    connect(ui->batterySlider, SIGNAL(valueChanged(int)), ui->batteryBar, SLOT(setValue(int)));
+    connect(ui->batterySlider, SIGNAL(valueChanged(int)), ui->percentLabel, SLOT(setNum(int)));
+    connect(ui->powerButton, SIGNAL(pressed()), this, SLOT(powerClicked()));
     connect(ui->selectButton, SIGNAL(pressed()), this, SLOT(okClicked()));
     connect(ui->touchSkinBox, SIGNAL(stateChanged(int)), this, SLOT(decreaseBattery()));
     connect(ui->powerSlider, SIGNAL(valueChanged(int)),
@@ -28,10 +27,10 @@ MainWindow::~MainWindow(){
 }
 
 void MainWindow::navUp(){
-    --menuLocation;
-    if(menuLocation == -1)
-        menuLocation=ui->listWidget->count() -1;
-    ui->listWidget->setCurrentRow(menuLocation);
+    device.setMenuLocation(device.getMenuLocation() - 1);
+    if(device.getMenuLocation() == -1)
+        device.setMenuLocation(ui->listWidget->count() -1);
+    ui->listWidget->setCurrentRow(device.getMenuLocation());
 }
 
 void MainWindow::powerLevel(int x){
@@ -41,28 +40,29 @@ void MainWindow::powerLevel(int x){
 }
 
 void MainWindow::navDown(){
-    ++menuLocation;
-    if(menuLocation == ui->listWidget->count())
-        menuLocation = 0;
-    ui->listWidget->setCurrentRow(menuLocation);
+    device.setMenuLocation(device.getMenuLocation() + 1);;
+    if(device.getMenuLocation() == ui->listWidget->count())
+        device.setMenuLocation(0);
+    ui->listWidget->setCurrentRow(device.getMenuLocation());
 }
 
 void MainWindow::powerClicked(){
     if (device.getPowerStatus()){
         ui->listWidget->clear();
-        menuLocation=0;
+        ui->message->clear();
+        device.setMenuLocation(0);
     }else{
         ui->listWidget->addItem("Programs");
         ui->listWidget->addItem("Frequency");
         ui->listWidget->addItem("Recordings");
         ui->listWidget->addItem("Settings");
-        menuLocation=0;
-        ui->listWidget->setCurrentRow(menuLocation);
+        device.setMenuLocation(0);
+        ui->listWidget->setCurrentRow(device.getMenuLocation());
     }
 
     device.setPowerStatus(!device.getPowerStatus());
-    menuScreen = 0;
-    nestedMenu = 0;
+    device.setMenuScreen(0);
+    device.setNestedMenu(0);
 }
 
 void MainWindow::programsClicked(){
@@ -72,16 +72,17 @@ void MainWindow::programsClicked(){
     ui->listWidget->addItem("Head");
     ui->listWidget->addItem("Bloating");
     ui->listWidget->setCurrentRow(0);
-    menuScreen = 1;
-    ++nestedMenu;
+    device.setMenuScreen(1);
+    device.setNestedMenu(1);
 }
 
 void MainWindow::programMessage(){
     ui->listWidget->clear();
     ui->message->setText("Please choose a power level.\n " + QString::number(ui->powerSlider->value()));
-    menuScreen = 3;
-    ++nestedMenu;
-
+    device.setMenuScreen(3);
+    device.setNestedMenu(device.getNestedMenu()+1);
+    device.setMenuScreen(3);
+    device.setNestedMenu(2);
 }
 
 void MainWindow::frequencyClicked(){
@@ -91,14 +92,14 @@ void MainWindow::frequencyClicked(){
     ui->listWidget->addItem("75Hz");
     ui->listWidget->addItem("125Hz");
     ui->listWidget->setCurrentRow(0);
-    menuScreen = 2;
-    ++nestedMenu;
+    device.setMenuScreen(2);
+    device.setNestedMenu(1);
 }
 
 void MainWindow::recordingsClicked(){
     ui->listWidget->clear();
-    menuScreen = 3;
-    ++nestedMenu;
+    device.setMenuScreen(3);
+    device.setNestedMenu(1);
 }
 
 void MainWindow::settingsClicked(){
@@ -112,8 +113,8 @@ void MainWindow::settingsClicked(){
     ui->listWidget->addItem("Language");
     ui->listWidget->addItem("Color");
     ui->listWidget->setCurrentRow(0);
-    menuScreen = 4;
-    ++nestedMenu;
+    device.setMenuScreen(4);
+    device.setNestedMenu(1);
 }
 
 void MainWindow::homeClicked(){
@@ -123,29 +124,29 @@ void MainWindow::homeClicked(){
     ui->listWidget->addItem("Frequency");
     ui->listWidget->addItem("Recordings");
     ui->listWidget->addItem("Settings");
-    menuLocation=0;
-    ui->listWidget->setCurrentRow(menuLocation);
-    menuScreen = 0;
-    nestedMenu = 0;
+    device.setMenuLocation(0);
+    ui->listWidget->setCurrentRow(device.getMenuLocation());
+    device.setMenuScreen(0);
+    device.setNestedMenu(0);
 }
 
 void MainWindow::okClicked(){
     //program selected from menu
-    if (menuScreen == 0){
-        if (menuLocation == 0){
+    if (device.getMenuScreen() == 0){
+        if (device.getMenuLocation() == 0){
             programsClicked();
-        } else if (menuLocation == 1) {
+        } else if (device.getMenuLocation() == 1) {
             frequencyClicked();
-        } else if (menuLocation == 2) {
+        } else if (device.getMenuLocation() == 2) {
             recordingsClicked();
-        } else if (menuLocation == 3) {
+        } else if (device.getMenuLocation() == 3) {
             settingsClicked();
         }
 
-        menuLocation=0;
+        device.setMenuLocation(0);
 
-    } else if (menuScreen == 1){
-        if (menuLocation == 0 || menuLocation == 1 || menuLocation == 2 || menuLocation == 3){
+    } else if (device.getMenuScreen() == 1){
+        if (device.getMenuLocation() == 0 || device.getMenuLocation() == 1 || device.getMenuLocation() == 2 || device.getMenuLocation() == 3){
             programMessage();
         }
     }
@@ -153,8 +154,8 @@ void MainWindow::okClicked(){
 }
 
 void MainWindow::returnButton(){
-    if(nestedMenu == 1){
-        nestedMenu = 0;
+    if(device.getNestedMenu() == 1){
+        device.setNestedMenu(0);
         homeClicked();
     }
 }
