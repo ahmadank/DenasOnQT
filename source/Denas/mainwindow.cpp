@@ -34,7 +34,8 @@ void MainWindow::navUp(){
 }
 
 void MainWindow::powerLevel(int x){
-     ui->message->setText("Please choose a power level.\n " + QString::number(ceil(x / 10)+1));
+    if(device.getNestedMenu() >1)
+        ui->message->setText("Please choose a power level.\n " + QString::number(ceil(x / 10)+1));
 
 
 }
