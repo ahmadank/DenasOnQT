@@ -29,3 +29,11 @@ void Device::setMenuScreen(int screen){
     menuScreen = screen;
 }
 
+int Device::getNestedMenu(){
+    return nestedMenu;
+}
+
+void Device::setNestedMenu(int menu){
+    nestedMenu = menu;
+}
+

@@ -55,7 +55,7 @@ void MainWindow::powerClicked(){
 
     device.setPowerStatus(!device.getPowerStatus());
     device.setMenuScreen(0);
-    nestedMenu = 0;
+    device.setNestedMenu(0);
 }
 
 void MainWindow::programsClicked(){
@@ -66,15 +66,15 @@ void MainWindow::programsClicked(){
     ui->listWidget->addItem("Bloating");
     ui->listWidget->setCurrentRow(0);
     device.setMenuScreen(1);
-    ++nestedMenu;
+    device.setNestedMenu(1);
 }
 
 void MainWindow::programMessage(){
     ui->listWidget->clear();
     ui->message->setText("Please choose a power level.");
-    device.setMenuScreen(3);
     ui->message->setText("Please choose a power level.\n " + QString::number(ui->powerSlider->value()));
-    ++nestedMenu;
+    device.setMenuScreen(3);
+    device.setNestedMenu(2);
 }
 
 void MainWindow::frequencyClicked(){
@@ -85,13 +85,13 @@ void MainWindow::frequencyClicked(){
     ui->listWidget->addItem("125Hz");
     ui->listWidget->setCurrentRow(0);
     device.setMenuScreen(2);
-    ++nestedMenu;
+    device.setNestedMenu(1);
 }
 
 void MainWindow::recordingsClicked(){
     ui->listWidget->clear();
     device.setMenuScreen(3);
-    ++nestedMenu;
+    device.setNestedMenu(1);
 }
 
 void MainWindow::settingsClicked(){
@@ -106,7 +106,7 @@ void MainWindow::settingsClicked(){
     ui->listWidget->addItem("Color");
     ui->listWidget->setCurrentRow(0);
     device.setMenuScreen(4);
-    ++nestedMenu;
+    device.setNestedMenu(1);
 }
 
 void MainWindow::homeClicked(){
@@ -119,7 +119,7 @@ void MainWindow::homeClicked(){
     device.setMenuLocation(0);
     ui->listWidget->setCurrentRow(device.getMenuLocation());
     device.setMenuScreen(0);
-    nestedMenu = 0;
+    device.setNestedMenu(0);
 }
 
 void MainWindow::okClicked(){
@@ -146,8 +146,8 @@ void MainWindow::okClicked(){
 }
 
 void MainWindow::returnButton(){
-    if(nestedMenu == 1){
-        nestedMenu = 0;
+    if(device.getNestedMenu() == 1){
+        device.setNestedMenu(0);
         homeClicked();
     }
 }
