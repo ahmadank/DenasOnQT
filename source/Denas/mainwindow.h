@@ -5,6 +5,9 @@
 #include <QDebug>
 #include <QTime>
 #include "device.h"
+#include <vector>
+#include <string>
+using namespace std;
 
 
 namespace Ui {
@@ -25,7 +28,7 @@ private:
     int menuLocation;
     int menuScreen;
     int nestedMenu;
-
+    static vector<string> collectionVec;
 
 private slots:
     void powerClicked();

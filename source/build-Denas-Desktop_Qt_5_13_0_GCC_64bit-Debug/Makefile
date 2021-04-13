@@ -52,12 +52,14 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../Denas/main.cpp \
+SOURCES       = ../Denas/device.cpp \
+		../Denas/main.cpp \
 		../Denas/mainwindow.cpp \
 		../Denas/therapytimer.cpp qrc_diagrmas.cpp \
 		moc_mainwindow.cpp \
 		moc_therapytimer.cpp
-OBJECTS       = main.o \
+OBJECTS       = device.o \
+		main.o \
 		mainwindow.o \
 		therapytimer.o \
 		qrc_diagrmas.o \
@@ -254,8 +256,10 @@ DIST          = ../../../../Qt/5.13.0/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/exceptions.prf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/yacc.prf \
 		../../../../Qt/5.13.0/gcc_64/mkspecs/features/lex.prf \
-		../Denas/Denas.pro ../Denas/mainwindow.h \
-		../Denas/therapytimer.h ../Denas/main.cpp \
+		../Denas/Denas.pro ../Denas/device.h \
+		../Denas/mainwindow.h \
+		../Denas/therapytimer.h ../Denas/device.cpp \
+		../Denas/main.cpp \
 		../Denas/mainwindow.cpp \
 		../Denas/therapytimer.cpp
 QMAKE_TARGET  = Denas
@@ -672,8 +676,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../Denas/diagrmas.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt/5.13.0/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Denas/mainwindow.h ../Denas/therapytimer.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Denas/main.cpp ../Denas/mainwindow.cpp ../Denas/therapytimer.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Denas/device.h ../Denas/mainwindow.h ../Denas/therapytimer.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Denas/device.cpp ../Denas/main.cpp ../Denas/mainwindow.cpp ../Denas/therapytimer.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Denas/mainwindow.ui $(DISTDIR)/
 
 
@@ -829,6 +833,10 @@ moc_mainwindow.cpp: ../Denas/mainwindow.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtGui/qicon.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/QDebug \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/QTime \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qdatetime.h \
+		../Denas/device.h \
 		moc_predefs.h \
 		../../../../Qt/5.13.0/gcc_64/bin/moc
 	/home/student/Qt/5.13.0/gcc_64/bin/moc $(DEFINES) --include /home/student/Desktop/3004_group_project/source/build-Denas-Desktop_Qt_5_13_0_GCC_64bit-Debug/moc_predefs.h -I/home/student/Qt/5.13.0/gcc_64/mkspecs/linux-g++ -I/home/student/Desktop/3004_group_project/source/Denas -I/home/student/Qt/5.13.0/gcc_64/include -I/home/student/Qt/5.13.0/gcc_64/include/QtWidgets -I/home/student/Qt/5.13.0/gcc_64/include/QtGui -I/home/student/Qt/5.13.0/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Denas/mainwindow.h -o moc_mainwindow.cpp
@@ -1054,6 +1062,9 @@ compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_heade
 
 ####### Compile
 
+device.o: ../Denas/device.cpp ../Denas/device.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o device.o ../Denas/device.cpp
+
 main.o: ../Denas/main.cpp ../Denas/mainwindow.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QMainWindow \
 		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qmainwindow.h \
@@ -1161,13 +1172,138 @@ main.o: ../Denas/main.cpp ../Denas/mainwindow.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtGui/qicon.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/QDebug \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/QTime \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qdatetime.h \
+		../Denas/device.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QApplication \
 		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qapplication.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtCore/qcoreapplication.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtCore/qeventloop.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtGui/qguiapplication.h \
-		../../../../Qt/5.13.0/gcc_64/include/QtGui/qinputmethod.h
+		../../../../Qt/5.13.0/gcc_64/include/QtGui/qinputmethod.h \
+		../Denas/therapytimer.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/QtCore \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/QtCoreDepends \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qabstractanimation.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qabstracteventdispatcher.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qabstractitemmodel.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qabstractnativeeventfilter.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qabstractproxymodel.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qabstractstate.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qabstracttransition.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qanimationgroup.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qarraydataops.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qarraydatapointer.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qbasictimer.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qbitarray.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qbuffer.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qbytearraymatcher.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qcache.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qcborarray.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qcborvalue.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qcborcommon.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qregularexpression.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/quuid.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qcbormap.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qcborstream.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qfloat16.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qcollator.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qcommandlineoption.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qcommandlineparser.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qconcatenatetablesproxymodel.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qcryptographichash.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qdeadlinetimer.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qelapsedtimer.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qdir.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qfileinfo.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qdiriterator.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qeasingcurve.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qendian.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qeventtransition.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qexception.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qfactoryinterface.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qfileselector.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/QObject \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/QStringList \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qfilesystemwatcher.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qfinalstate.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qfuture.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qfutureinterface.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qrunnable.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qresultstore.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qfuturesynchronizer.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qfuturewatcher.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qhistorystate.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qidentityproxymodel.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qisenum.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qitemselectionmodel.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qjsonarray.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qjsonvalue.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qjsondocument.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qjsonobject.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qlibrary.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qlibraryinfo.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qversionnumber.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qlinkedlist.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qlockfile.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qloggingcategory.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qmath.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qmessageauthenticationcode.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qmetaobject.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qmimedata.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qmimedatabase.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qmimetype.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qobjectcleanuphandler.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qoperatingsystemversion.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qparallelanimationgroup.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qpauseanimation.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qplugin.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qpointer.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qpluginloader.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qprocess.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qpropertyanimation.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qvariantanimation.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qqueue.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qrandom.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qreadwritelock.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qresource.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qsavefile.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qscopedvaluerollback.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qscopeguard.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qsemaphore.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qsequentialanimationgroup.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qsettings.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qsharedmemory.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qsignalmapper.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qsignaltransition.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qsocketnotifier.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qsortfilterproxymodel.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qstack.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qstandardpaths.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qstate.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qstatemachine.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qstorageinfo.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qstringlistmodel.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qsystemsemaphore.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qtemporarydir.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qtemporaryfile.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qtextboundaryfinder.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qtextcodec.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qthread.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qthreadpool.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qthreadstorage.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qtimeline.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qtimer.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qtimezone.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qtranslator.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qtransposeproxymodel.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qtypetraits.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qwaitcondition.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qwineventnotifier.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qxmlstream.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qtcoreversion.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Denas/main.cpp
 
 mainwindow.o: ../Denas/mainwindow.cpp ../Denas/mainwindow.h \
@@ -1277,6 +1413,10 @@ mainwindow.o: ../Denas/mainwindow.cpp ../Denas/mainwindow.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtGui/qicon.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/QDebug \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/QTime \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qdatetime.h \
+		../Denas/device.h \
 		ui_mainwindow.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtCore/QVariant \
 		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QApplication \
@@ -1320,10 +1460,7 @@ mainwindow.o: ../Denas/mainwindow.cpp ../Denas/mainwindow.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qlayout.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qlayoutitem.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qgridlayout.h \
-		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QWidget \
-		../../../../Qt/5.13.0/gcc_64/include/QtCore/QDebug \
-		../../../../Qt/5.13.0/gcc_64/include/QtCore/QTime \
-		../../../../Qt/5.13.0/gcc_64/include/QtCore/qdatetime.h
+		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../Denas/mainwindow.cpp
 
 therapytimer.o: ../Denas/therapytimer.cpp ../Denas/therapytimer.h \
