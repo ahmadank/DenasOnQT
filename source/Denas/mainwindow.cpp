@@ -18,6 +18,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
             this, SLOT(powerClicked()));
     connect(ui->selectButton, SIGNAL(pressed()), this, SLOT(okClicked()));
     connect(ui->touchSkinBox, SIGNAL(stateChanged(int)), this, SLOT(decreaseBattery()));
+    connect(ui->powerSlider, SIGNAL(valueChanged(int)),
+            this, SLOT(powerLevel(int)));
+
 }
 
 MainWindow::~MainWindow(){
@@ -29,6 +32,12 @@ void MainWindow::navUp(){
     if(menuLocation == -1)
         menuLocation=ui->listWidget->count() -1;
     ui->listWidget->setCurrentRow(menuLocation);
+}
+
+void MainWindow::powerLevel(int x){
+     ui->message->setText("Please choose a power level.\n " + QString::number(ceil(x / 10)+1));
+
+
 }
 
 void MainWindow::navDown(){
@@ -72,6 +81,7 @@ void MainWindow::programMessage(){
     ui->message->setText("Please choose a power level.\n " + QString::number(ui->powerSlider->value()));
     menuScreen = 3;
     ++nestedMenu;
+
 }
 
 void MainWindow::frequencyClicked(){
