@@ -8,6 +8,7 @@
 #include "therapytimer.h"
 #include <vector>
 #include <string>
+#include <math.h>
 
 using namespace std;
 
@@ -42,6 +43,7 @@ private slots:
     void homeClicked();
     void returnButton();
     void decreaseBattery();
+    void powerLevel(int);
 
 };
 
