@@ -1,8 +1,8 @@
 #include "recording.h"
 
-Recording::Recording(QString t1, QString t2) {
+Recording::Recording(QString t1) {
     therapy = t1;
-    time = t2;
+    time = qDateTime.currentDateTime().toString();
 }
 
 QString Recording::getTherapy() {

@@ -37,7 +37,6 @@ private:
     TherapyTimer therapyTimer;
     Programs programs;
     HomeMenu homeMenu;
-    QDateTime qDateTime;
     vector<Recording> recordingCollection;
 
 private slots:

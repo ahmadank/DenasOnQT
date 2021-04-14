@@ -146,13 +146,13 @@ void MainWindow::okClicked(){
     } else if (device.getMenuScreen() == 1){
         programMessage();
         if (device.getMenuLocation() == 0 && ui->recordTherapyBox->isChecked()){
-            recordingCollection.push_back(Recording(programs.getProgram(0), qDateTime.currentDateTime().toString()));
+            recordingCollection.push_back(Recording(programs.getProgram(0)));
         } else if (device.getMenuLocation() == 1 && ui->recordTherapyBox->isChecked()) {
-            recordingCollection.push_back(Recording(programs.getProgram(1), qDateTime.currentDateTime().toString()));
+            recordingCollection.push_back(Recording(programs.getProgram(1)));
         } else if (device.getMenuLocation() == 2 && ui->recordTherapyBox->isChecked()) {
-            recordingCollection.push_back(Recording(programs.getProgram(2), qDateTime.currentDateTime().toString()));
+            recordingCollection.push_back(Recording(programs.getProgram(2)));
         } else if (device.getMenuLocation() == 3 && ui->recordTherapyBox->isChecked()) {
-            recordingCollection.push_back(Recording(programs.getProgram(3), qDateTime.currentDateTime().toString()));
+            recordingCollection.push_back(Recording(programs.getProgram(3)));
         }
     }
 
