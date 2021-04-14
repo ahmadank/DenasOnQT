@@ -8,9 +8,11 @@
 #include "programs.h"
 #include "homemenu.h"
 #include "therapytimer.h"
+#include "recording.h"
 #include <vector>
-#include <string>
+#include <QString>
 #include <math.h>
+#include <QDateTime>
 
 using namespace std;
 
@@ -35,7 +37,8 @@ private:
     TherapyTimer therapyTimer;
     Programs programs;
     HomeMenu homeMenu;
-    static vector<string> collectionVec;
+    QDateTime qDateTime;
+    vector<Recording> recordingCollection;
 
 private slots:
     void powerClicked();

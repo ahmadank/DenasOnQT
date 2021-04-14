@@ -30,6 +30,7 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
         programs.cpp \
+        recording.cpp \
         therapytimer.cpp
 
 HEADERS += \
@@ -37,6 +38,7 @@ HEADERS += \
         homemenu.h \
         mainwindow.h \
         programs.h \
+        recording.h \
         therapytimer.h
 
 FORMS += \

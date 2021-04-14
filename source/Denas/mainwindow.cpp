@@ -1,8 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-#include "device.h"
-
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
 
@@ -17,8 +15,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->powerButton, SIGNAL(pressed()), this, SLOT(powerClicked()));
     connect(ui->selectButton, SIGNAL(pressed()), this, SLOT(okClicked()));
     connect(ui->touchSkinBox, SIGNAL(stateChanged(int)), this, SLOT(decreaseBattery()));
-    connect(ui->powerSlider, SIGNAL(valueChanged(int)),
-            this, SLOT(powerLevel(int)));
+    connect(ui->powerSlider, SIGNAL(valueChanged(int)), this, SLOT(powerLevel(int)));
 
 }
 
@@ -33,18 +30,16 @@ void MainWindow::navUp(){
     ui->listWidget->setCurrentRow(device.getMenuLocation());
 }
 
-void MainWindow::powerLevel(int x){
-    if(device.getNestedMenu() >1)
-        ui->message->setText("Please choose a power level.\n " + QString::number(ceil(x / 10)+1));
-
-
-}
-
 void MainWindow::navDown(){
     device.setMenuLocation(device.getMenuLocation() + 1);;
     if(device.getMenuLocation() == ui->listWidget->count())
         device.setMenuLocation(0);
     ui->listWidget->setCurrentRow(device.getMenuLocation());
+}
+
+void MainWindow::powerLevel(int x){
+    if(device.getNestedMenu() >1)
+        ui->message->setText("Please choose a power level.\n " + QString::number(ceil(x / 10)+1));
 }
 
 void MainWindow::powerClicked(){
@@ -96,6 +91,12 @@ void MainWindow::frequencyClicked(){
 
 void MainWindow::recordingsClicked(){
     ui->listWidget->clear();
+
+    if (recordingCollection.size() > 0) {
+        for(int i=0; i<recordingCollection.size(); i++) {
+            ui->listWidget->addItem(recordingCollection[i].getTherapy() + " (" + recordingCollection[i].getTime() + ")");
+        }
+    }
     device.setMenuScreen(3);
     device.setNestedMenu(1);
     device.setOption(2);
@@ -143,8 +144,15 @@ void MainWindow::okClicked(){
         device.setMenuLocation(0);
 
     } else if (device.getMenuScreen() == 1){
-        if (device.getMenuLocation()>=0){
-            programMessage();
+        programMessage();
+        if (device.getMenuLocation() == 0 && ui->recordTherapyBox->isChecked()){
+            recordingCollection.push_back(Recording(programs.getProgram(0), qDateTime.currentDateTime().toString()));
+        } else if (device.getMenuLocation() == 1 && ui->recordTherapyBox->isChecked()) {
+            recordingCollection.push_back(Recording(programs.getProgram(1), qDateTime.currentDateTime().toString()));
+        } else if (device.getMenuLocation() == 2 && ui->recordTherapyBox->isChecked()) {
+            recordingCollection.push_back(Recording(programs.getProgram(2), qDateTime.currentDateTime().toString()));
+        } else if (device.getMenuLocation() == 3 && ui->recordTherapyBox->isChecked()) {
+            recordingCollection.push_back(Recording(programs.getProgram(3), qDateTime.currentDateTime().toString()));
         }
     }
 

@@ -56,6 +56,7 @@ public:
     QLabel *label;
     QListWidget *listWidget;
     QLabel *message;
+    QCheckBox *recordTherapyBox;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -198,6 +199,9 @@ public:
 "	qproperty-alignment: AlignCenter;\n"
 "}\n"
 ""));
+        recordTherapyBox = new QCheckBox(centralWidget);
+        recordTherapyBox->setObjectName(QString::fromUtf8("recordTherapyBox"));
+        recordTherapyBox->setGeometry(QRect(260, 160, 211, 23));
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
@@ -224,6 +228,7 @@ public:
         percentLabel->setText(QCoreApplication::translate("MainWindow", "100", nullptr));
         label->setText(QCoreApplication::translate("MainWindow", "%", nullptr));
         message->setText(QString());
+        recordTherapyBox->setText(QCoreApplication::translate("MainWindow", "Record Therapy", nullptr));
     } // retranslateUi
 
 };

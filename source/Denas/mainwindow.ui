@@ -334,7 +334,20 @@ border-image: url(:powerbutton.png);
 </string>
     </property>
     <property name="text">
-     <string> </string>
+     <string/>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="recordTherapyBox">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>160</y>
+      <width>211</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Record Therapy</string>
     </property>
    </widget>
   </widget>
