@@ -26,6 +26,7 @@ CONFIG += c++11
 
 SOURCES += \
         device.cpp \
+        homemenu.cpp \
         main.cpp \
         mainwindow.cpp \
         programs.cpp \
@@ -33,6 +34,7 @@ SOURCES += \
 
 HEADERS += \
         device.h \
+        homemenu.h \
         mainwindow.h \
         programs.h \
         therapytimer.h

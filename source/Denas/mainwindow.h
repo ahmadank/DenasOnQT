@@ -6,6 +6,7 @@
 #include <QTime>
 #include "device.h"
 #include "programs.h"
+#include "homemenu.h"
 #include "therapytimer.h"
 #include <vector>
 #include <string>
@@ -24,13 +25,16 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void fillHomeMenu();
     void fillPrograms();
+
 
 private:
     Ui::MainWindow *ui;
     Device device;
     TherapyTimer therapyTimer;
     Programs programs;
+    HomeMenu homeMenu;
     static vector<string> collectionVec;
 
 private slots:

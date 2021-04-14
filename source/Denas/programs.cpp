@@ -3,10 +3,10 @@
 Programs::Programs()
 {
 
-    programsCollection.push_back("Programs");
-    programsCollection.push_back("Frequency");
-    programsCollection.push_back("Recordings");
-    programsCollection.push_back("Settings");
+    programsCollection.push_back("Pain");
+    programsCollection.push_back("Throat");
+    programsCollection.push_back("Head");
+    programsCollection.push_back("Bloating");
 
     numOfPrograms = programsCollection.size();
 }

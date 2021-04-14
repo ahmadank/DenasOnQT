@@ -53,7 +53,7 @@ void MainWindow::powerClicked(){
         ui->message->clear();
         device.setMenuLocation(0);
     }else{
-        fillPrograms();
+        fillHomeMenu();
         device.setMenuLocation(0);
         ui->listWidget->setCurrentRow(device.getMenuLocation());
         ui->powerSlider->setDisabled(true);
@@ -66,10 +66,7 @@ void MainWindow::powerClicked(){
 
 void MainWindow::programsClicked(){
     ui->listWidget->clear();
-    ui->listWidget->addItem("Pain");
-    ui->listWidget->addItem("Throat");
-    ui->listWidget->addItem("Head");
-    ui->listWidget->addItem("Bloating");
+    fillPrograms();
     ui->listWidget->setCurrentRow(0);
     device.setMenuScreen(1);
     device.setNestedMenu(1);
@@ -123,7 +120,7 @@ void MainWindow::settingsClicked(){
 void MainWindow::homeClicked(){
     ui->listWidget->clear();
     ui->message->clear();
-    fillPrograms();
+    fillHomeMenu();
     device.setMenuLocation(0);
     ui->listWidget->setCurrentRow(device.getMenuLocation());
     device.setMenuScreen(0);
@@ -184,5 +181,11 @@ void MainWindow::decreaseBattery(){
 void MainWindow::fillPrograms(){
     for (int i=0; i<programs.getNumOfPrograms();i++){
         ui->listWidget->addItem(programs.getProgram(i));
+    }
+}
+
+void MainWindow::fillHomeMenu(){
+    for (int i=0; i<homeMenu.getNumOfItems();i++){
+        ui->listWidget->addItem(homeMenu.getMenuItem(i));
     }
 }
