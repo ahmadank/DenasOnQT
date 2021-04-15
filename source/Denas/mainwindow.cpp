@@ -99,7 +99,6 @@ void MainWindow::recordingsClicked(){
 
 void MainWindow::settingsClicked(){
     fillSettings();
-    ui->listWidget->setCurrentRow(0);
     device.setMenuScreen(4);
     device.setNestedMenu(1);
     device.setOption(3);
@@ -142,7 +141,7 @@ void MainWindow::okClicked(){
         } else if (device.getMenuLocation() == 3 && ui->recordTherapyBox->isChecked()) {
             recordingCollection.push_back(Recording(programs.getProgram(3)));
         }
-        else if (device.getMenuScreen() == 2) {
+    } else if (device.getMenuScreen() == 2) {
         programMessage();
         if (device.getMenuLocation() == 0 && ui->recordTherapyBox->isChecked()){
             recordingCollection.push_back(Recording(frequency.getFrequency(0)));
@@ -153,9 +152,7 @@ void MainWindow::okClicked(){
         } else if (device.getMenuLocation() == 3 && ui->recordTherapyBox->isChecked()) {
             recordingCollection.push_back(Recording(frequency.getFrequency(3)));
         }
-            }
     }
-
 }
 
 void MainWindow::returnButton(){
