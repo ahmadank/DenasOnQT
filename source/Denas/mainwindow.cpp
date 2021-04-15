@@ -142,6 +142,18 @@ void MainWindow::okClicked(){
         } else if (device.getMenuLocation() == 3 && ui->recordTherapyBox->isChecked()) {
             recordingCollection.push_back(Recording(programs.getProgram(3)));
         }
+        else if (device.getMenuScreen() == 2) {
+        programMessage();
+        if (device.getMenuLocation() == 0 && ui->recordTherapyBox->isChecked()){
+            recordingCollection.push_back(Recording(frequency.getFrequency(0)));
+        } else if (device.getMenuLocation() == 1 && ui->recordTherapyBox->isChecked()) {
+            recordingCollection.push_back(Recording(frequency.getFrequency(1)));
+        } else if (device.getMenuLocation() == 2 && ui->recordTherapyBox->isChecked()) {
+            recordingCollection.push_back(Recording(frequency.getFrequency(2)));
+        } else if (device.getMenuLocation() == 3 && ui->recordTherapyBox->isChecked()) {
+            recordingCollection.push_back(Recording(frequency.getFrequency(3)));
+        }
+            }
     }
 
 }

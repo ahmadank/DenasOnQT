@@ -59,6 +59,7 @@ SOURCES       = ../Denas/device.cpp \
 		../Denas/mainwindow.cpp \
 		../Denas/programs.cpp \
 		../Denas/recording.cpp \
+		../Denas/settings.cpp \
 		../Denas/therapytimer.cpp qrc_diagrmas.cpp \
 		moc_mainwindow.cpp \
 		moc_therapytimer.cpp
@@ -69,6 +70,7 @@ OBJECTS       = device.o \
 		mainwindow.o \
 		programs.o \
 		recording.o \
+		settings.o \
 		therapytimer.o \
 		qrc_diagrmas.o \
 		moc_mainwindow.o \
@@ -270,6 +272,7 @@ DIST          = ../../../../Qt/5.13.0/gcc_64/mkspecs/features/spec_pre.prf \
 		../Denas/mainwindow.h \
 		../Denas/programs.h \
 		../Denas/recording.h \
+		../Denas/settings.h \
 		../Denas/therapytimer.h ../Denas/device.cpp \
 		../Denas/frequency.cpp \
 		../Denas/homemenu.cpp \
@@ -277,6 +280,7 @@ DIST          = ../../../../Qt/5.13.0/gcc_64/mkspecs/features/spec_pre.prf \
 		../Denas/mainwindow.cpp \
 		../Denas/programs.cpp \
 		../Denas/recording.cpp \
+		../Denas/settings.cpp \
 		../Denas/therapytimer.cpp
 QMAKE_TARGET  = Denas
 DESTDIR       = 
@@ -692,8 +696,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../Denas/diagrmas.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt/5.13.0/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../Denas/device.h ../Denas/frequency.h ../Denas/homemenu.h ../Denas/mainwindow.h ../Denas/programs.h ../Denas/recording.h ../Denas/therapytimer.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../Denas/device.cpp ../Denas/frequency.cpp ../Denas/homemenu.cpp ../Denas/main.cpp ../Denas/mainwindow.cpp ../Denas/programs.cpp ../Denas/recording.cpp ../Denas/therapytimer.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../Denas/device.h ../Denas/frequency.h ../Denas/homemenu.h ../Denas/mainwindow.h ../Denas/programs.h ../Denas/recording.h ../Denas/settings.h ../Denas/therapytimer.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../Denas/device.cpp ../Denas/frequency.cpp ../Denas/homemenu.cpp ../Denas/main.cpp ../Denas/mainwindow.cpp ../Denas/programs.cpp ../Denas/recording.cpp ../Denas/settings.cpp ../Denas/therapytimer.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../Denas/mainwindow.ui $(DISTDIR)/
 
 
@@ -982,6 +986,7 @@ moc_mainwindow.cpp: ../Denas/mainwindow.h \
 		../Denas/recording.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtCore/QDateTime \
 		../Denas/frequency.h \
+		../Denas/settings.h \
 		moc_predefs.h \
 		../../../../Qt/5.13.0/gcc_64/bin/moc
 	/home/student/Qt/5.13.0/gcc_64/bin/moc $(DEFINES) --include /home/student/Desktop/3004_group_project/source/build-Denas-Desktop_Qt_5_13_0_GCC_64bit-Debug/moc_predefs.h -I/home/student/Qt/5.13.0/gcc_64/mkspecs/linux-g++ -I/home/student/Desktop/3004_group_project/source/Denas -I/home/student/Qt/5.13.0/gcc_64/include -I/home/student/Qt/5.13.0/gcc_64/include/QtWidgets -I/home/student/Qt/5.13.0/gcc_64/include/QtGui -I/home/student/Qt/5.13.0/gcc_64/include/QtCore -I. -I/usr/include/c++/7 -I/usr/include/x86_64-linux-gnu/c++/7 -I/usr/include/c++/7/backward -I/usr/lib/gcc/x86_64-linux-gnu/7/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../Denas/mainwindow.h -o moc_mainwindow.cpp
@@ -1520,6 +1525,7 @@ main.o: ../Denas/main.cpp ../Denas/mainwindow.h \
 		../Denas/recording.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtCore/QDateTime \
 		../Denas/frequency.h \
+		../Denas/settings.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QApplication \
 		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qapplication.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/qdesktopwidget.h \
@@ -1767,6 +1773,7 @@ mainwindow.o: ../Denas/mainwindow.cpp ../Denas/mainwindow.h \
 		../Denas/recording.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtCore/QDateTime \
 		../Denas/frequency.h \
+		../Denas/settings.h \
 		ui_mainwindow.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtCore/QVariant \
 		../../../../Qt/5.13.0/gcc_64/include/QtWidgets/QApplication \
@@ -1892,6 +1899,41 @@ recording.o: ../Denas/recording.cpp ../Denas/recording.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtCore/qregexp.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtCore/qstringmatcher.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o recording.o ../Denas/recording.cpp
+
+settings.o: ../Denas/settings.cpp ../Denas/settings.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/QString \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qstring.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qchar.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qglobal.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qconfig.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qtcore-config.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qsystemdetection.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qprocessordetection.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qcompilerdetection.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qtypeinfo.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qsysinfo.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qlogging.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qflags.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qatomic.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qbasicatomic.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qgenericatomic.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qatomic_cxx11.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qatomic_msvc.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qglobalstatic.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qmutex.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qnumeric.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qbytearray.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qrefcount.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qnamespace.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qarraydata.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qstringliteral.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qstringalgorithms.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qstringview.h \
+		../../../../Qt/5.13.0/gcc_64/include/QtCore/qstringbuilder.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o settings.o ../Denas/settings.cpp
 
 therapytimer.o: ../Denas/therapytimer.cpp ../Denas/therapytimer.h \
 		../../../../Qt/5.13.0/gcc_64/include/QtCore/QtCore \
