@@ -10,6 +10,7 @@
 #include "therapytimer.h"
 #include "recording.h"
 #include "frequency.h"
+#include "settings.h"
 #include <vector>
 #include <QString>
 #include <math.h>
@@ -31,6 +32,7 @@ public:
     void fillHomeMenu();
     void fillPrograms();
     void fillFrequency();
+    void fillSettings();
 
 private:
     Ui::MainWindow *ui;
@@ -39,6 +41,7 @@ private:
     Programs programs;
     Frequency frequency;
     HomeMenu homeMenu;
+    Settings settings;
     vector<Recording> recordingCollection;
 
 private slots:

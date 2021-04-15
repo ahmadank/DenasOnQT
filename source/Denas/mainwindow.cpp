@@ -98,15 +98,7 @@ void MainWindow::recordingsClicked(){
 }
 
 void MainWindow::settingsClicked(){
-    ui->listWidget->clear();
-    ui->listWidget->addItem("Clear Recordings History");
-    ui->listWidget->addItem("Sound");
-    ui->listWidget->addItem("Brightness");
-    ui->listWidget->addItem("Economy");
-    ui->listWidget->addItem("Clock");
-    ui->listWidget->addItem("Alarm Clock");
-    ui->listWidget->addItem("Language");
-    ui->listWidget->addItem("Color");
+    fillSettings();
     ui->listWidget->setCurrentRow(0);
     device.setMenuScreen(4);
     device.setNestedMenu(1);
@@ -205,6 +197,14 @@ void MainWindow::fillFrequency(){
     ui->listWidget->clear();
     for (int i=0; i<frequency.getNumOfFrequencies();i++){
         ui->listWidget->addItem(frequency.getFrequency(i));
+    }
+    ui->listWidget->setCurrentRow(0);
+}
+
+void MainWindow::fillSettings(){
+    ui->listWidget->clear();
+    for (int i=0; i<settings.getNumOfgOptions();i++){
+        ui->listWidget->addItem(settings.getSettingOption(i));
     }
     ui->listWidget->setCurrentRow(0);
 }
