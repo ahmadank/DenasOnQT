@@ -188,7 +188,7 @@ void MainWindow::returnButton(){
 void MainWindow::decreaseBattery(){
         while (ui->batterySlider->value() && ui->touchSkinBox->isChecked()){
             ui->batterySlider->setValue(ui->batterySlider->value() - 1);
-             therapyTimer.waitInterval(2500 - (90* ui->powerSlider->value()));
+             therapyTimer.waitInterval(3500 - (270* ui->powerSlider->value()));
 
             }
 
