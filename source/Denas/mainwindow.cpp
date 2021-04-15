@@ -61,9 +61,7 @@ void MainWindow::powerClicked(){
 }
 
 void MainWindow::programsClicked(){
-    ui->listWidget->clear();
     fillPrograms();
-    ui->listWidget->setCurrentRow(0);
     device.setMenuScreen(1);
     device.setNestedMenu(1);
     device.setOption(0);
@@ -80,12 +78,7 @@ void MainWindow::programMessage(){
 
 void MainWindow::frequencyClicked(){
     ui->frequencySlider->setDisabled(false);
-    ui->listWidget->clear();
-    ui->listWidget->addItem("10Hz");
-    ui->listWidget->addItem("30Hz");
-    ui->listWidget->addItem("75Hz");
-    ui->listWidget->addItem("125Hz");
-    ui->listWidget->setCurrentRow(0);
+    fillFrequency();
     device.setMenuScreen(2);
     device.setNestedMenu(1);
     device.setOption(1);
@@ -125,11 +118,8 @@ void MainWindow::homeClicked(){
     ui->powerSlider->setDisabled(true);
     ui->frequencySlider->setValue(0);
     ui->frequencySlider->setDisabled(true);
-    ui->listWidget->clear();
-    ui->message->clear();
     fillHomeMenu();
     device.setMenuLocation(0);
-    ui->listWidget->setCurrentRow(device.getMenuLocation());
     device.setMenuScreen(0);
     device.setNestedMenu(0);
 }
@@ -195,13 +185,26 @@ void MainWindow::decreaseBattery(){
 }
 
 void MainWindow::fillPrograms(){
+    ui->listWidget->clear();
     for (int i=0; i<programs.getNumOfPrograms();i++){
         ui->listWidget->addItem(programs.getProgram(i));
     }
+    ui->listWidget->setCurrentRow(0);
 }
 
 void MainWindow::fillHomeMenu(){
+    ui->listWidget->clear();
+    ui->message->clear();
     for (int i=0; i<homeMenu.getNumOfItems();i++){
         ui->listWidget->addItem(homeMenu.getMenuItem(i));
     }
+    ui->listWidget->setCurrentRow(0);
+}
+
+void MainWindow::fillFrequency(){
+    ui->listWidget->clear();
+    for (int i=0; i<frequency.getNumOfFrequencies();i++){
+        ui->listWidget->addItem(frequency.getFrequency(i));
+    }
+    ui->listWidget->setCurrentRow(0);
 }

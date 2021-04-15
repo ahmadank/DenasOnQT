@@ -26,6 +26,7 @@ CONFIG += c++11
 
 SOURCES += \
         device.cpp \
+        frequency.cpp \
         homemenu.cpp \
         main.cpp \
         mainwindow.cpp \
@@ -35,6 +36,7 @@ SOURCES += \
 
 HEADERS += \
         device.h \
+        frequency.h \
         homemenu.h \
         mainwindow.h \
         programs.h \

@@ -9,6 +9,7 @@
 #include "homemenu.h"
 #include "therapytimer.h"
 #include "recording.h"
+#include "frequency.h"
 #include <vector>
 #include <QString>
 #include <math.h>
@@ -29,13 +30,14 @@ public:
     ~MainWindow();
     void fillHomeMenu();
     void fillPrograms();
-
+    void fillFrequency();
 
 private:
     Ui::MainWindow *ui;
     Device device;
     TherapyTimer therapyTimer;
     Programs programs;
+    Frequency frequency;
     HomeMenu homeMenu;
     vector<Recording> recordingCollection;
 
