@@ -157,7 +157,14 @@ public:
 
         frequencySlider = new QSlider(verticalLayoutWidget);
         frequencySlider->setObjectName(QString::fromUtf8("frequencySlider"));
+        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(frequencySlider->sizePolicy().hasHeightForWidth());
+        frequencySlider->setSizePolicy(sizePolicy);
+        frequencySlider->setMaximum(4);
         frequencySlider->setOrientation(Qt::Horizontal);
+        frequencySlider->setTickPosition(QSlider::TicksBelow);
 
         frequencyLayout->addWidget(frequencySlider);
 
@@ -176,7 +183,11 @@ public:
 
         powerSlider = new QSlider(verticalLayoutWidget_2);
         powerSlider->setObjectName(QString::fromUtf8("powerSlider"));
+        powerSlider->setMaximum(10);
+        powerSlider->setSingleStep(1);
+        powerSlider->setPageStep(10);
         powerSlider->setOrientation(Qt::Horizontal);
+        powerSlider->setTickInterval(10);
 
         powerLayout->addWidget(powerSlider);
 

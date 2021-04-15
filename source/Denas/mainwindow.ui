@@ -236,8 +236,20 @@ border-image: url(:powerbutton.png);
      </item>
      <item>
       <widget class="QSlider" name="frequencySlider">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maximum">
+        <number>4</number>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="tickPosition">
+        <enum>QSlider::TicksBelow</enum>
        </property>
       </widget>
      </item>
@@ -262,8 +274,20 @@ border-image: url(:powerbutton.png);
      </item>
      <item>
       <widget class="QSlider" name="powerSlider">
+       <property name="maximum">
+        <number>10</number>
+       </property>
+       <property name="singleStep">
+        <number>1</number>
+       </property>
+       <property name="pageStep">
+        <number>10</number>
+       </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="tickInterval">
+        <number>10</number>
        </property>
       </widget>
      </item>

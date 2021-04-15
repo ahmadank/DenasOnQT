@@ -39,7 +39,7 @@ void MainWindow::navDown(){
 
 void MainWindow::powerLevel(int x){
     if(device.getNestedMenu() >1)
-        ui->message->setText("Please choose a power level.\n " + QString::number(ceil(x / 10)+1));
+        ui->message->setText("Please choose a power level.\n " + QString::number(x));
 }
 
 void MainWindow::powerClicked(){
@@ -52,6 +52,7 @@ void MainWindow::powerClicked(){
         device.setMenuLocation(0);
         ui->listWidget->setCurrentRow(device.getMenuLocation());
         ui->powerSlider->setDisabled(true);
+        ui->frequencySlider->setDisabled(true);
     }
 
     device.setPowerStatus(!device.getPowerStatus());
@@ -78,6 +79,7 @@ void MainWindow::programMessage(){
 }
 
 void MainWindow::frequencyClicked(){
+    ui->frequencySlider->setDisabled(false);
     ui->listWidget->clear();
     ui->listWidget->addItem("10Hz");
     ui->listWidget->addItem("30Hz");
@@ -119,6 +121,10 @@ void MainWindow::settingsClicked(){
 }
 
 void MainWindow::homeClicked(){
+    ui->powerSlider->setValue(0);
+    ui->powerSlider->setDisabled(true);
+    ui->frequencySlider->setValue(0);
+    ui->frequencySlider->setDisabled(true);
     ui->listWidget->clear();
     ui->message->clear();
     fillHomeMenu();
@@ -180,10 +186,12 @@ void MainWindow::returnButton(){
 }
 
 void MainWindow::decreaseBattery(){
-    while (ui->batterySlider->value() && ui->touchSkinBox->isChecked()){
-        ui->batterySlider->setValue(ui->batterySlider->value()-1);
-        therapyTimer.waitInterval(1000);
-    }
+        while (ui->batterySlider->value() && ui->touchSkinBox->isChecked()){
+            ui->batterySlider->setValue(ui->batterySlider->value() - 1);
+             therapyTimer.waitInterval(2500 - (90* ui->powerSlider->value()));
+
+            }
+
 }
 
 void MainWindow::fillPrograms(){
