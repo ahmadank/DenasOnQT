@@ -348,7 +348,7 @@ border-image: url(:powerbutton.png);
       <x>20</x>
       <y>40</y>
       <width>201</width>
-      <height>121</height>
+      <height>51</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -372,6 +372,25 @@ border-image: url(:powerbutton.png);
     </property>
     <property name="text">
      <string>Record Therapy</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="timerLabel">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>100</y>
+      <width>201</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {
+	qproperty-alignment: AlignCenter;
+}
+</string>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>

@@ -57,6 +57,7 @@ public:
     QListWidget *listWidget;
     QLabel *message;
     QCheckBox *recordTherapyBox;
+    QLabel *timerLabel;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -205,7 +206,7 @@ public:
         listWidget->setGeometry(QRect(10, 30, 221, 141));
         message = new QLabel(centralWidget);
         message->setObjectName(QString::fromUtf8("message"));
-        message->setGeometry(QRect(20, 40, 201, 121));
+        message->setGeometry(QRect(20, 40, 201, 51));
         message->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "	qproperty-alignment: AlignCenter;\n"
 "}\n"
@@ -213,6 +214,13 @@ public:
         recordTherapyBox = new QCheckBox(centralWidget);
         recordTherapyBox->setObjectName(QString::fromUtf8("recordTherapyBox"));
         recordTherapyBox->setGeometry(QRect(260, 160, 211, 23));
+        timerLabel = new QLabel(centralWidget);
+        timerLabel->setObjectName(QString::fromUtf8("timerLabel"));
+        timerLabel->setGeometry(QRect(20, 100, 201, 51));
+        timerLabel->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"	qproperty-alignment: AlignCenter;\n"
+"}\n"
+""));
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);
@@ -240,6 +248,7 @@ public:
         label->setText(QCoreApplication::translate("MainWindow", "%", nullptr));
         message->setText(QString());
         recordTherapyBox->setText(QCoreApplication::translate("MainWindow", "Record Therapy", nullptr));
+        timerLabel->setText(QString());
     } // retranslateUi
 
 };

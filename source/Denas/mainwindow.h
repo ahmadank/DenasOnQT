@@ -15,6 +15,7 @@
 #include <QString>
 #include <math.h>
 #include <QDateTime>
+#include <QTimer>
 
 using namespace std;
 
@@ -33,6 +34,10 @@ public:
     void fillPrograms();
     void fillFrequency();
     void fillSettings();
+
+    QTimer *timer;
+    QTime time;
+
 
 private:
     Ui::MainWindow *ui;
@@ -58,6 +63,8 @@ private slots:
     void returnButton();
     void decreaseBattery();
     void powerLevel(int);
+
+    void updateTimer();
 
 };
 

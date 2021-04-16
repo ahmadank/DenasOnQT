@@ -10,7 +10,7 @@ TherapyTimer::TherapyTimer(){
 }
 
 void TherapyTimer::MySlot(){
-    qDebug() << "TIMER Executed";
+    //qDebug() << "TIMER Executed";
 }
 
 void TherapyTimer::waitInterval(int ms){
