@@ -199,8 +199,6 @@ void MainWindow::decreaseBattery(){
 
     if (!ui->touchSkinBox->isChecked()) {
         timer->stop();
-    } else if (time.toString("m:ss") == "0:00") {
-        timer->stop();
     }
 
 }
@@ -245,6 +243,7 @@ void MainWindow::updateTimer(){
         homeClicked();
         time.setHMS(0,0,10);
         ui->touchSkinBox->setChecked(false);
+        ui->recordTherapyBox->setChecked(false);
     }
     ui->timerLabel->setText(time.toString("m:ss"));
 }
