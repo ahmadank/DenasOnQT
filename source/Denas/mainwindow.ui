@@ -377,11 +377,17 @@ border-image: url(:powerbutton.png);
    <widget class="QLabel" name="timerLabel">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>100</y>
+      <x>260</x>
+      <y>190</y>
       <width>201</width>
       <height>51</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>DejaVu Sans</family>
+      <pointsize>20</pointsize>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">QLabel {

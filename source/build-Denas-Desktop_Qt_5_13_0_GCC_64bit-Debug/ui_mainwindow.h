@@ -216,7 +216,11 @@ public:
         recordTherapyBox->setGeometry(QRect(260, 160, 211, 23));
         timerLabel = new QLabel(centralWidget);
         timerLabel->setObjectName(QString::fromUtf8("timerLabel"));
-        timerLabel->setGeometry(QRect(20, 100, 201, 51));
+        timerLabel->setGeometry(QRect(260, 190, 201, 51));
+        QFont font;
+        font.setFamily(QString::fromUtf8("DejaVu Sans"));
+        font.setPointSize(20);
+        timerLabel->setFont(font);
         timerLabel->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "	qproperty-alignment: AlignCenter;\n"
 "}\n"
