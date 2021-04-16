@@ -189,7 +189,7 @@ void MainWindow::decreaseBattery(){
         timer->start(1000);
         while (ui->batterySlider->value() && ui->touchSkinBox->isChecked()){
             ui->batterySlider->setValue(ui->batterySlider->value() - 1);
-             therapyTimer.waitInterval(3500 - (270* ui->powerSlider->value()));
+             waitInterval(3500 - (270* ui->powerSlider->value()));
 
             }
 
@@ -234,4 +234,11 @@ void MainWindow::updateTimer(){
 
     qDebug() << time.toString("m:ss");
     ui->timerLabel->setText(time.toString("m:ss"));
+}
+
+void MainWindow::waitInterval(int ms){
+    QTime endTime = QTime::currentTime().addMSecs(ms);
+    while(endTime >= QTime::currentTime()){
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+    }
 }
