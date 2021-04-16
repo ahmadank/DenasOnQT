@@ -192,7 +192,7 @@ void MainWindow::decreaseBattery(){
 
     if (!ui->touchSkinBox->isChecked()) {
         timer->stop();
-    } else if (time.toString() == "0:00") {
+    } else if (time.toString("m:ss") == "0:00") {
         timer->stop();
     }
 
@@ -232,10 +232,10 @@ void MainWindow::fillSettings(){
 }
 
 void MainWindow::updateTimer(){
-    qDebug() << "TIMER Executed";
     time = time.addSecs(-1);
-
-    qDebug() << time.toString("m:ss");
+    if (time.toString("m:ss") == "0:00") {
+        timer->stop();
+    }
     ui->timerLabel->setText(time.toString("m:ss"));
 }
 
