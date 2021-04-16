@@ -238,3 +238,10 @@ void MainWindow::updateTimer(){
     qDebug() << time.toString("m:ss");
     ui->timerLabel->setText(time.toString("m:ss"));
 }
+
+void MainWindow::waitInterval(int ms){
+    QTime endTime = QTime::currentTime().addMSecs(ms);
+    while(endTime >= QTime::currentTime()){
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+    }
+}

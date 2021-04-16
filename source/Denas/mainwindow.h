@@ -34,6 +34,7 @@ public:
     void fillPrograms();
     void fillFrequency();
     void fillSettings();
+    void waitInterval(int);
 
     QTimer *timer;
     QTime time;
