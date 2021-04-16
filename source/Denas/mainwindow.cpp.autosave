@@ -190,9 +190,7 @@ void MainWindow::decreaseBattery(){
         therapyTimer.waitInterval(3500 - (270* ui->powerSlider->value()));
     }
 
-    if (!ui->touchSkinBox->isChecked()) {
-        timer->stop();
-    } else if (time.toString() == "0:00") {
+    if (!ui->touchSkinBox->isChecked() || time.operator==(0,0,0)){
         timer->stop();
     }
 
