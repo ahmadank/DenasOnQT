@@ -206,7 +206,7 @@ public:
         listWidget->setGeometry(QRect(10, 30, 221, 141));
         message = new QLabel(centralWidget);
         message->setObjectName(QString::fromUtf8("message"));
-        message->setGeometry(QRect(20, 40, 201, 51));
+        message->setGeometry(QRect(20, 40, 201, 121));
         message->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "	qproperty-alignment: AlignCenter;\n"
 "}\n"

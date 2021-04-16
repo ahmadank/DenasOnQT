@@ -46,7 +46,7 @@ void MainWindow::navDown(){
 
 void MainWindow::powerLevel(int x){
     if(device.getNestedMenu() >1)
-        ui->message->setText("1. Please choose a power level.\n " + QString::number(x) + "\n\n 2. Please place device on skin.");
+        ui->message->setText("Please choose a power level.\n " + QString::number(x));
 }
 
 void MainWindow::powerClicked(){
@@ -77,7 +77,7 @@ void MainWindow::programsClicked(){
 void MainWindow::programMessage(){
     ui->listWidget->clear();
     ui->powerSlider->setDisabled(false);
-    ui->message->setText("1. Please choose a power level.\n " + QString::number(ui->powerSlider->value()) + "\n\n 2. Please place device on skin.");
+    ui->message->setText("Please choose a power level.\n " + QString::number(ui->powerSlider->value()));
     device.setMenuScreen(3);
     device.setNestedMenu(device.getNestedMenu()+1);
     device.setMenuScreen(3);
@@ -192,10 +192,7 @@ void MainWindow::decreaseBattery(){
 
     if (!ui->touchSkinBox->isChecked()) {
         timer->stop();
-    } else if (time.toString("m:ss") == "0:00") {
-        timer->stop();
     }
-
 }
 
 void MainWindow::fillPrograms(){
