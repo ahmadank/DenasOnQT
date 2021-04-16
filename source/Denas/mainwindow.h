@@ -7,7 +7,6 @@
 #include "device.h"
 #include "programs.h"
 #include "homemenu.h"
-#include "therapytimer.h"
 #include "recording.h"
 #include "frequency.h"
 #include "settings.h"
@@ -43,7 +42,6 @@ public:
 private:
     Ui::MainWindow *ui;
     Device device;
-    TherapyTimer therapyTimer;
     Programs programs;
     Frequency frequency;
     HomeMenu homeMenu;
