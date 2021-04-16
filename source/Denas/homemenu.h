@@ -6,12 +6,13 @@
 using namespace std;
 
 
-class HomeMenu
-{
+class HomeMenu {
+
 public:
     HomeMenu();
     QString getMenuItem(int);
     int getNumOfItems();
+
 private:
     vector<QString> homeMenuCollection;
     int numOfItems;

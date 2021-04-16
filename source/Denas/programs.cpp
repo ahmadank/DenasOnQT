@@ -1,8 +1,6 @@
 #include "programs.h"
 
-Programs::Programs()
-{
-
+Programs::Programs(){
     programsCollection.push_back("Pain");
     programsCollection.push_back("Throat");
     programsCollection.push_back("Head");
@@ -10,7 +8,6 @@ Programs::Programs()
 
     numOfPrograms = programsCollection.size();
 }
-
 
 QString Programs::getProgram(int i){
     return programsCollection[i];

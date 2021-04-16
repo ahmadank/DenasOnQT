@@ -1,7 +1,6 @@
 #include "homemenu.h"
 
-HomeMenu::HomeMenu()
-{
+HomeMenu::HomeMenu(){
     homeMenuCollection.push_back("Programs");
     homeMenuCollection.push_back("Frequency");
     homeMenuCollection.push_back("Recordings");

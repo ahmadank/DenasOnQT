@@ -1,7 +1,6 @@
 #include "device.h"
 
-Device::Device()
-{
+Device::Device() {
    powerOn = false;
 }
 
@@ -20,6 +19,7 @@ int Device::getMenuLocation(){
 void Device::setMenuLocation(int location){
     menuLocation = location;
 }
+
 void Device::setOption(int location){
     option = location;
 }

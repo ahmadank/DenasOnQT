@@ -6,16 +6,16 @@
 
 using namespace std;
 
-class Frequency
-{
+class Frequency{
+
 public:
     Frequency();
     QString getFrequency(int);
     int getNumOfFrequencies();
+
 private:
     vector<QString> frequencyCollection;
     int numOfFrequencies;
-
 };
 
 #endif // FREQUENCY_H

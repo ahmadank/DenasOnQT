@@ -1,7 +1,6 @@
 #include "frequency.h"
 
-Frequency::Frequency()
-{
+Frequency::Frequency(){
     frequencyCollection.push_back("10Hz");
     frequencyCollection.push_back("30Hz");
     frequencyCollection.push_back("75Hz");

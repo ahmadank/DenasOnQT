@@ -1,7 +1,6 @@
 #include "settings.h"
 
-Settings::Settings()
-{
+Settings::Settings(){
     settingsCollection.push_back("Clear Recordings History");
     settingsCollection.push_back("Sound");
     settingsCollection.push_back("Brightness");
@@ -18,6 +17,6 @@ QString Settings::getSettingOption(int i){
     return settingsCollection[i];
 }
 
-int Settings::getNumOfgOptions(){
+int Settings::getNumOfOptions(){
     return numOfOptions;
 }

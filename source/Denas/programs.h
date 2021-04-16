@@ -6,16 +6,16 @@
 using namespace std;
 
 
-class Programs
-{
+class Programs {
+
 public:
     Programs();
     QString getProgram(int);
     int getNumOfPrograms();
+
 private:
     vector<QString> programsCollection;
     int numOfPrograms;
-
 };
 
 #endif // PROGRAMS_H

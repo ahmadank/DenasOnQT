@@ -232,7 +232,7 @@ void MainWindow::fillFrequency(){
 
 void MainWindow::fillSettings(){
     ui->listWidget->clear();
-    for (int i=0; i<settings.getNumOfgOptions();i++){
+    for (int i=0; i<settings.getNumOfOptions();i++){
         ui->listWidget->addItem(settings.getSettingOption(i));
     }
     ui->listWidget->setCurrentRow(0);

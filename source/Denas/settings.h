@@ -10,7 +10,7 @@ class Settings
 public:
     Settings();
     QString getSettingOption(int);
-    int getNumOfgOptions();
+    int getNumOfOptions();
 private:
     vector<QString> settingsCollection;
     int numOfOptions;
