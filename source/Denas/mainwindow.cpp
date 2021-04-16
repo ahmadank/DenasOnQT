@@ -230,8 +230,8 @@ void MainWindow::fillSettings(){
 
 void MainWindow::updateTimer(){
     qDebug() << "TIMER Executed";
-    time.addSecs(-1);
+    time = time.addSecs(-1);
 
-    qDebug() << time.toString("m:ss")
+    qDebug() << time.toString("m:ss");
     ui->timerLabel->setText(time.toString("m:ss"));
 }
