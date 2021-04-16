@@ -244,6 +244,7 @@ void MainWindow::updateTimer(){
         timer->stop();
         homeClicked();
         time.setHMS(0,0,10);
+        ui->touchSkinBox->setChecked(false);
     }
     ui->timerLabel->setText(time.toString("m:ss"));
 }
