@@ -242,6 +242,8 @@ void MainWindow::updateTimer(){
     time = time.addSecs(-1);
     if (time.toString("m:ss") == "0:00") {
         timer->stop();
+        homeClicked();
+        time.setHMS(0,0,10);
     }
     ui->timerLabel->setText(time.toString("m:ss"));
 }
