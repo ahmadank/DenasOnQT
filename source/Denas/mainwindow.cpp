@@ -25,7 +25,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     connect(timer, SIGNAL(timeout()), this, SLOT(updateTimer()));
 
-    timer->start(1000);
 
 }
 
@@ -187,6 +186,7 @@ void MainWindow::returnButton(){
 }
 
 void MainWindow::decreaseBattery(){
+        timer->start(1000);
         while (ui->batterySlider->value() && ui->touchSkinBox->isChecked()){
             ui->batterySlider->setValue(ui->batterySlider->value() - 1);
              therapyTimer.waitInterval(3500 - (270* ui->powerSlider->value()));

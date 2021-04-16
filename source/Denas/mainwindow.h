@@ -66,6 +66,7 @@ private slots:
 
     void updateTimer();
 
+
 };
 
 #endif // MAINWINDOW_H
