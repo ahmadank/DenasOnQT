@@ -18,10 +18,10 @@ public:
 
 private:
     bool powerOn;
-    int menuLocation = 0;
-    int menuScreen = 0;
-    int nestedMenu = 0;
-    int option = 0;
+    int menuLocation;
+    int menuScreen;
+    int nestedMenu;
+    int option;
 };
 
 #endif // DEVICE_H

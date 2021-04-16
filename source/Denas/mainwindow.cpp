@@ -65,6 +65,8 @@ void MainWindow::powerClicked(){
     device.setPowerStatus(!device.getPowerStatus());
     device.setMenuScreen(0);
     device.setNestedMenu(0);
+    device.setOption(0);
+    device.setMenuLocation(0);
 }
 
 void MainWindow::programsClicked(){
@@ -112,6 +114,9 @@ void MainWindow::settingsClicked(){
 }
 
 void MainWindow::homeClicked(){
+    if (!device.getPowerStatus()){
+        return;
+    }
     ui->powerSlider->setValue(0);
     ui->powerSlider->setDisabled(true);
     ui->frequencySlider->setValue(0);
@@ -123,7 +128,9 @@ void MainWindow::homeClicked(){
 }
 
 void MainWindow::okClicked(){
-    //program selected from menu
+    if (!device.getPowerStatus()){
+        return;
+    }
     if (device.getMenuScreen() == 0){
         if (device.getMenuLocation() == 0){
             programsClicked();
