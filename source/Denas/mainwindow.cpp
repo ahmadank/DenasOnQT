@@ -36,6 +36,8 @@ void MainWindow::disableButtons(){
     ui->frequencySlider->setDisabled(true);
     ui->recordTherapyBox->setDisabled(true);
     ui->touchSkinBox->setDisabled(true);
+    ui->touchSkinBox->setChecked(false);
+    ui->recordTherapyBox->setChecked(false);
 }
 void MainWindow::navUp(){
     device.setMenuLocation(device.getMenuLocation() - 1);
