@@ -155,7 +155,7 @@ void MainWindow::okClicked(){
         }
         device.setMenuLocation(0);
 
-    }if (device.getMenuScreen() == 1 || device.getMenuScreen() == 2){
+    }else if (device.getMenuScreen() == 1 || device.getMenuScreen() == 2){
         programMessage();
     }
 }
