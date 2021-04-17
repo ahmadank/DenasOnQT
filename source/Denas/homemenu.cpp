@@ -5,7 +5,6 @@ HomeMenu::HomeMenu(){
     homeMenuCollection.push_back("Frequency");
     homeMenuCollection.push_back("Recordings");
     homeMenuCollection.push_back("Settings");
-
     numOfItems = homeMenuCollection.size();
 }
 

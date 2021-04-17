@@ -21,8 +21,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     time.setHMS(0,0,10);
     ui->timerLabel->setText("0:10");
     connect(timer, SIGNAL(timeout()), this, SLOT(updateTimer()));
-
-
+    disableButtons();
 }
 
 MainWindow::~MainWindow(){
@@ -31,6 +30,12 @@ MainWindow::~MainWindow(){
 void MainWindow::disableButtons(){
     ui->powerSlider->setDisabled(true);
     ui->frequencySlider->setDisabled(true);
+    ui->powerSlider->setValue(0);
+    ui->powerSlider->setDisabled(true);
+    ui->frequencySlider->setValue(0);
+    ui->frequencySlider->setDisabled(true);
+    ui->recordTherapyBox->setDisabled(true);
+    ui->touchSkinBox->setDisabled(true);
 }
 void MainWindow::navUp(){
     device.setMenuLocation(device.getMenuLocation() - 1);
@@ -50,21 +55,22 @@ void MainWindow::powerLevel(int x){
     if(device.getNestedMenu() >1)
         ui->message->setText("1. Please choose a power level.\n " + QString::number(x) + "\n\n 2. Please place device on skin.");
 }
-
-void MainWindow::powerClicked(){
-    ui->listWidget->clear();
-    ui->message->clear();
-    if (!device.getPowerStatus()){
-        fillHomeMenu();
-        ui->listWidget->setCurrentRow(device.getMenuLocation());
-    }
-
-    device.setPowerStatus(!device.getPowerStatus());
+void MainWindow::homeScreen(){
     device.setMenuScreen(0);
     device.setNestedMenu(0);
     device.setOption(0);
     device.setMenuLocation(0);
+    fillHomeMenu();
     disableButtons();
+    ui->listWidget->setCurrentRow(device.getMenuLocation());
+}
+void MainWindow::powerClicked(){
+    ui->listWidget->clear();
+    ui->message->clear();
+    if (!device.getPowerStatus()){
+        homeScreen();
+    }
+    device.setPowerStatus(!device.getPowerStatus());
 }
 
 void MainWindow::programsClicked(){
@@ -77,6 +83,8 @@ void MainWindow::programsClicked(){
 void MainWindow::programMessage(){
     ui->listWidget->clear();
     ui->powerSlider->setDisabled(false);
+    ui->recordTherapyBox->setDisabled(false);
+    ui->touchSkinBox->setDisabled(false);
     ui->message->setText("1. Please choose a power level.\n " + QString::number(ui->powerSlider->value()) + "\n\n 2. Please place device on skin.");
     device.setMenuScreen(3);
     device.setNestedMenu(device.getNestedMenu()+1);
@@ -115,14 +123,7 @@ void MainWindow::homeClicked(){
     if (!device.getPowerStatus()){
         return;
     }
-    ui->powerSlider->setValue(0);
-    ui->powerSlider->setDisabled(true);
-    ui->frequencySlider->setValue(0);
-    ui->frequencySlider->setDisabled(true);
-    fillHomeMenu();
-    device.setMenuLocation(0);
-    device.setMenuScreen(0);
-    device.setNestedMenu(0);
+    homeScreen();
 }
 
 void MainWindow::okClicked(){
@@ -139,7 +140,6 @@ void MainWindow::okClicked(){
         } else if (device.getMenuLocation() == 3) {
             settingsClicked();
         }
-
         device.setMenuLocation(0);
 
     } else if (device.getMenuScreen() == 1){
@@ -169,14 +169,11 @@ void MainWindow::okClicked(){
 
 void MainWindow::returnButton(){
     if(device.getNestedMenu() == 1){
-        device.setNestedMenu(0);
         homeClicked();
     }
     else if(device.getNestedMenu() == 2){
         device.setNestedMenu(1);
         ui->message->clear();
-        ui->powerSlider->setDisabled(true);
-        ui->powerSlider->setValue(0);
         if(device.getOption() == 0)
             programsClicked();
         else if(device.getOption() == 1)
@@ -186,6 +183,7 @@ void MainWindow::returnButton(){
         else if(device.getOption() == 3)
             settingsClicked();
     }
+    disableButtons();
 }
 
 void MainWindow::decreaseBattery(){
