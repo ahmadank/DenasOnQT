@@ -186,6 +186,12 @@ void MainWindow::decreaseBattery(){
         waitInterval(3500 - (270* ui->powerSlider->value()));
     }
 
+    if (ui->batterySlider->value() == 0){
+        powerClicked();
+        timer->stop();
+        ui->timerLabel->clear();
+    }
+
     if (!ui->touchSkinBox->isChecked()) {
         timer->stop();
     }
