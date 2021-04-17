@@ -65,8 +65,7 @@ private slots:
     void decreaseBattery();
     void powerLevel(int);
     void updateTimer();
-
-
+    void recordTherapy();
 };
 
 #endif // MAINWINDOW_H
