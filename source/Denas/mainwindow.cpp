@@ -5,7 +5,6 @@
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
-
     connect(ui->upButton, SIGNAL(released()), this, SLOT(navUp()));
     connect(ui->downButton, SIGNAL(released()), this, SLOT(navDown()));
     connect(ui->leftButton, SIGNAL(released()), this, SLOT(returnButton()));
@@ -18,18 +17,21 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->selectButton, SIGNAL(pressed()), this, SLOT(okClicked()));
     connect(ui->touchSkinBox, SIGNAL(stateChanged(int)), this, SLOT(decreaseBattery()));
     connect(ui->powerSlider, SIGNAL(valueChanged(int)), this, SLOT(powerLevel(int)));
-
     timer = new QTimer();
     time.setHMS(0,0,10);
     ui->timerLabel->setText("0:10");
-
     connect(timer, SIGNAL(timeout()), this, SLOT(updateTimer()));
+
+
 }
 
 MainWindow::~MainWindow(){
     delete ui;
 }
-
+void MainWindow::disableButtons(){
+    ui->powerSlider->setDisabled(true);
+    ui->frequencySlider->setDisabled(true);
+}
 void MainWindow::navUp(){
     device.setMenuLocation(device.getMenuLocation() - 1);
     if(device.getMenuLocation() == -1)
@@ -50,16 +52,11 @@ void MainWindow::powerLevel(int x){
 }
 
 void MainWindow::powerClicked(){
-    if (device.getPowerStatus()){
-        ui->listWidget->clear();
-        ui->message->clear();
-        device.setMenuLocation(0);
-    }else{
+    ui->listWidget->clear();
+    ui->message->clear();
+    if (!device.getPowerStatus()){
         fillHomeMenu();
-        device.setMenuLocation(0);
         ui->listWidget->setCurrentRow(device.getMenuLocation());
-        ui->powerSlider->setDisabled(true);
-        ui->frequencySlider->setDisabled(true);
     }
 
     device.setPowerStatus(!device.getPowerStatus());
@@ -67,6 +64,7 @@ void MainWindow::powerClicked(){
     device.setNestedMenu(0);
     device.setOption(0);
     device.setMenuLocation(0);
+    disableButtons();
 }
 
 void MainWindow::programsClicked(){

@@ -35,8 +35,6 @@ public:
     void fillSettings();
     void waitInterval(int);
 
-    QTimer *timer;
-    QTime time;
 
 
 private:
@@ -47,6 +45,10 @@ private:
     HomeMenu homeMenu;
     Settings settings;
     vector<Recording> recordingCollection;
+    void disableButtons();
+    void homeScreen();
+    QTime time;
+    QTimer *timer;
 
 private slots:
     void powerClicked();
@@ -62,7 +64,6 @@ private slots:
     void returnButton();
     void decreaseBattery();
     void powerLevel(int);
-
     void updateTimer();
 
 
