@@ -134,6 +134,15 @@ public:
 
         batteryBar = new QProgressBar(layoutWidget);
         batteryBar->setObjectName(QString::fromUtf8("batteryBar"));
+        QPalette palette;
+        QBrush brush(QColor(78, 154, 6, 255));
+        brush.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Active, QPalette::Highlight, brush);
+        palette.setBrush(QPalette::Inactive, QPalette::Highlight, brush);
+        QBrush brush1(QColor(145, 145, 145, 255));
+        brush1.setStyle(Qt::SolidPattern);
+        palette.setBrush(QPalette::Disabled, QPalette::Highlight, brush1);
+        batteryBar->setPalette(palette);
         batteryBar->setValue(100);
 
         batteryLayout->addWidget(batteryBar);
