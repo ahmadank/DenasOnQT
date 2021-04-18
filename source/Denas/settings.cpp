@@ -1,7 +1,6 @@
 #include "settings.h"
 
 Settings::Settings(){
-    settingsCollection.push_back("Clear Recordings History");
     settingsCollection.push_back("Sound");
     settingsCollection.push_back("Brightness");
     settingsCollection.push_back("Economy");
