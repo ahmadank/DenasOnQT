@@ -80,7 +80,10 @@ void MainWindow::homeScreen(){
 void MainWindow::powerClicked(){
     ui->listWidget->clear();
     ui->message->clear();
-    if (!device.getPowerStatus()){
+    if(ui->batterySlider->value() == 0){
+        disableButtons();
+        ui->message->setText("Batttry Is Dead\n Please Charge Device");
+   }else if (!device.getPowerStatus()){
         homeScreen();
     }
     device.setPowerStatus(!device.getPowerStatus());
