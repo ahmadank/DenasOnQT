@@ -2,7 +2,7 @@
 #define HOMEMENU_H
 #include <vector>
 #include <QString>
-
+using namespace std;
 
 class HomeMenu {
 
