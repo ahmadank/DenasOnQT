@@ -8,6 +8,8 @@ HomeMenu::HomeMenu(){
     numOfItems = homeMenuCollection.size();
 }
 
+HomeMenu::~HomeMenu(){}
+
 QString HomeMenu::getMenuItem(int i){
     return homeMenuCollection[i];
 }

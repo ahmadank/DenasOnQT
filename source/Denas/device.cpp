@@ -4,6 +4,8 @@ Device::Device() {
    powerOn = false;
 }
 
+Device::~Device(){}
+
 bool Device::getPowerStatus(){
     return powerOn;
 }

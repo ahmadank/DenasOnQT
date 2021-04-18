@@ -3,13 +3,12 @@
 #include <vector>
 #include <QString>
 
-using namespace std;
-
 
 class HomeMenu {
 
 public:
     HomeMenu();
+    ~HomeMenu();
     QString getMenuItem(int);
     int getNumOfItems();
 

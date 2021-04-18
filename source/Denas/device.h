@@ -5,6 +5,7 @@ class Device{
 
 public:
     Device();
+    ~Device();
     bool getPowerStatus();
     void setPowerStatus(bool);
     int getMenuLocation();
