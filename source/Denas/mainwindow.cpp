@@ -18,6 +18,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->touchSkinBox, SIGNAL(stateChanged(int)), this, SLOT(decreaseBattery()));
     connect(ui->powerSlider, SIGNAL(valueChanged(int)), this, SLOT(powerLevel(int)));
     connect(ui->recordTherapyBox, SIGNAL(stateChanged(int)), this, SLOT(recordTherapy()));
+    connect(ui->frequencySlider, SIGNAL(valueChanged(int)), this, SLOT(changeFreq(int)));
+
     timer = new QTimer();
     time.setHMS(0,0,10);
     ui->timerLabel->setText("0:10");
@@ -89,6 +91,13 @@ void MainWindow::powerClicked(){
     }
     device.setPowerStatus(!device.getPowerStatus());
 }
+
+ void MainWindow::changeFreq(int x){
+     if(device.getOption() == 1){
+         device.setMenuLocation(x);
+         ui->listWidget->setCurrentRow(device.getMenuLocation());
+     }
+ }
 
 void MainWindow::programsClicked(){
     fillPrograms();

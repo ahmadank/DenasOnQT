@@ -172,7 +172,7 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(frequencySlider->sizePolicy().hasHeightForWidth());
         frequencySlider->setSizePolicy(sizePolicy);
-        frequencySlider->setMaximum(4);
+        frequencySlider->setMaximum(3);
         frequencySlider->setOrientation(Qt::Horizontal);
         frequencySlider->setTickPosition(QSlider::TicksBelow);
 

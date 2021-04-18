@@ -280,7 +280,7 @@ border-image: url(:powerbutton.png);
         </sizepolicy>
        </property>
        <property name="maximum">
-        <number>4</number>
+        <number>3</number>
        </property>
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
