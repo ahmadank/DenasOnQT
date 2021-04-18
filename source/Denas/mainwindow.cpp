@@ -82,7 +82,8 @@ void MainWindow::powerClicked(){
     ui->message->clear();
     if(ui->batterySlider->value() == 0){
         disableButtons();
-        ui->message->setText("Batttry Is Dead\n Please Charge Device");
+        ui->message->setText("Battery Is Dead\n Please Charge Device");
+        QTimer::singleShot(1500, ui->message, SLOT(clear()));
    }else if (!device.getPowerStatus()){
         homeScreen();
     }
