@@ -10,6 +10,7 @@ class Frequency{
 
 public:
     Frequency();
+    ~Frequency();
     QString getFrequency(int);
     int getNumOfFrequencies();
 

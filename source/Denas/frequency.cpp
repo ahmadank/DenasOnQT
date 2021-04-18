@@ -9,6 +9,8 @@ Frequency::Frequency(){
     numOfFrequencies = frequencyCollection.size();
 }
 
+Frequency::~Frequency(){}
+
 QString Frequency::getFrequency(int i){
     return frequencyCollection[i];
 }
