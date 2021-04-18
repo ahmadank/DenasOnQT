@@ -8,11 +8,12 @@ Programs::Programs(){
 
     numOfPrograms = programsCollection.size();
 }
+Programs::~Programs(){}
 
 QString Programs::getProgram(int i){
     return programsCollection[i];
 }
 
 int Programs::getNumOfPrograms(){
-    return numOfPrograms;
+    return programsCollection.size();
 }

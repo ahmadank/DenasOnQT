@@ -5,6 +5,8 @@ Recording::Recording(QString t1) {
     time = qDateTime.currentDateTime().toString();
 }
 
+Recording::~Recording(){}
+
 QString Recording::getTherapy() {
     return therapy;
 }

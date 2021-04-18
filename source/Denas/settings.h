@@ -9,6 +9,7 @@ class Settings
 {
 public:
     Settings();
+    ~Settings();
     QString getSettingOption(int);
     int getNumOfOptions();
 private:

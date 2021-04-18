@@ -10,6 +10,7 @@ class Programs {
 
 public:
     Programs();
+    ~Programs();
     QString getProgram(int);
     int getNumOfPrograms();
 

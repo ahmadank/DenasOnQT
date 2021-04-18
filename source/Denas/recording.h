@@ -7,6 +7,7 @@
 class Recording {
 public:
     Recording(QString);
+    ~Recording();
     QString getTherapy();
     QString getTime();
 

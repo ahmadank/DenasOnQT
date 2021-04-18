@@ -13,6 +13,8 @@ Settings::Settings(){
     numOfOptions = settingsCollection.size();
 }
 
+Settings::~Settings(){}
+
 QString Settings::getSettingOption(int i){
     return settingsCollection[i];
 }
