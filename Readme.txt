@@ -23,8 +23,8 @@ Diagram folder includes:
  1. Use Cases (pdf)
  2. Use Case Diagram (pdf)
  3. Sequence Diagrams (pdf)
- 4. UML
- 5. Traceability Matrix
+ 4. UML (pdf)
+ 5. Traceability Matrix (pdf)
 
 -----------------------------------------------------------------------------------
 Header Files:
