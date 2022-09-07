@@ -2,12 +2,6 @@
 
 DENAS PCM SIMULATOR is our first collaborative project as university students. Its goal is to use QT creator to mimic the health device known as Denas PCM. Multiple test cases were taken into account to obtain a replica of the device functionality
 
-# Members
- - Ahmed Kamar
- - Krishna Mathiyaparanam
- - Modaser Bayan
- - Moiz Abbasi
-
 # Instructions
 1. Open Qt creator
 2. Select file option
